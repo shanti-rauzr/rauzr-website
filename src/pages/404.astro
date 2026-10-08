@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+
+const title = "Page not found — Rauzr";
+const description = "That page is not on rauzr.ai.";
+---
+
+<Base title={title} description={description}>
+  <section class="missing">
+    <div class="container">
+      <p class="kicker">404</p>
+      <h1>That page is not on this site.</h1>
+      <p class="lead">The dossier you wanted is not here. The product, the approach, and a note to Shanti are.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/">Back to home</a>
+        <a class="btn btn-secondary" href="/product/">Dossiq</a>
+        <a class="btn btn-secondary" href="/company/#contact">Contact</a>
+      </div>
+    </div>
+  </section>
+</Base>

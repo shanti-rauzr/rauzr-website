@@ -1,0 +1,10 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "Rauzr" } = Astro.props;
+---
+
+<img class="logo-mark" src="/favicon.svg" alt="" width="30" height="30" />
+<span>{title}</span>

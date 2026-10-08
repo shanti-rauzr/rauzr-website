@@ -1,0 +1,22 @@
+---
+const items = [
+  "US CBE-30",
+  "EU Type IB",
+  "CTD Module 3",
+  "Source inventory",
+  "Deterministic rules",
+  "Findings queue",
+  "Document review",
+  "Cite-only Ask",
+  "Trust tiers",
+  "Human disposition",
+];
+const loop = [...items, ...items];
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    {loop.map((item) => <span class="marquee-item">{item}</span>)}
+  </div>
+</div>
+<p class="sr-only">Dossiq covers {items.join(", ")}.</p>

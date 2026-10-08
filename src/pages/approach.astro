@@ -1,0 +1,195 @@
+---
+import Base from "../layouts/Base.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+const title = "Approach and trust — Rauzr";
+const description =
+  "How Dossiq separates extraction, deterministic rules, and human disposition. Attribution, trust tiers, an audit posture, and what the agent is not allowed to do.";
+---
+
+<Base title={title} description={description}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="crumb"><a href="/">Rauzr</a> <span aria-hidden="true">/</span> Approach</p>
+      <p class="kicker">Trust</p>
+      <h1>Built so a reviewer can defend the answer.</h1>
+      <p class="lead">
+        Dossiq is agentic software for a regulated review: retrieval over pharmaceutical documents, rules that do not drift, and a person on every disposition. The aim is a variation package someone can walk back through.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="split-title">
+    <div class="container">
+      <div class="section-head measure">
+        <p class="kicker">Separation</p>
+        <h2 id="split-title">Each kind of work has an owner.</h2>
+      </div>
+      <div class="lanes">
+        <article class="lane">
+          <p class="index">Extract</p>
+          <h3>The model reads.</h3>
+          <p>It pulls claims from R&amp;D, QC, QA, and prior filings. A claim without a document, a page, and a span is not an answer. High-precision retrieval is the job. Judgment is not.</p>
+        </article>
+        <article class="lane">
+          <p class="index">Rules</p>
+          <h3>The check is deterministic.</h3>
+          <p>Rules compare claims: a specification against a method, a stability conclusion against the data, impurity wording against the release text. The same inputs produce the same result. The rule id is stored on the finding.</p>
+        </article>
+        <article class="lane">
+          <p class="index">Regulatory affairs</p>
+          <h3>The person disposes.</h3>
+          <p>Findings show a source of Rule or Human. Severity, owner, and state are explicit. Agree, dispute, waive with a justification, or raise a finding the agent did not. That record is the disposition.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="table-title">
+    <div class="container">
+      <div class="section-head measure">
+        <h2 id="table-title">Who is allowed to do what.</h2>
+        <p>Ask is a reader. It is listed here because teams should see its limits next to the rules, not in a footnote.</p>
+      </div>
+      <div class="matrix-wrap">
+        <table class="matrix">
+          <caption class="sr-only">Which work belongs to the model, to deterministic rules, to Ask, and to regulatory affairs.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Work</th>
+              <th scope="col">Model</th>
+              <th scope="col">Rules</th>
+              <th scope="col">Ask</th>
+              <th scope="col">Regulatory affairs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Read source documents</th>
+              <td>Yes, and cite</td>
+              <td>Use stored claims</td>
+              <td>Yes, and cite</td>
+              <td>Reviews the source</td>
+            </tr>
+            <tr>
+              <th scope="row">Pass or fail a check</th>
+              <td>Never</td>
+              <td>Deterministic result</td>
+              <td>Never</td>
+              <td>Disposes the finding</td>
+            </tr>
+            <tr>
+              <th scope="row">Open a finding</th>
+              <td>Only via a rule result</td>
+              <td>When a check fails</td>
+              <td>Never</td>
+              <td>Can raise a human finding</td>
+            </tr>
+            <tr>
+              <th scope="row">Set severity</th>
+              <td>Never</td>
+              <td>From the rule</td>
+              <td>Never</td>
+              <td>Can set it on a human finding</td>
+            </tr>
+            <tr>
+              <th scope="row">Waive a finding</th>
+              <td>Never</td>
+              <td>Never</td>
+              <td>Never</td>
+              <td>With a justification logged</td>
+            </tr>
+            <tr>
+              <th scope="row">Submit to an agency</th>
+              <td>Never</td>
+              <td>Never</td>
+              <td>Never</td>
+              <td>Outside Dossiq, by a person</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine" style="margin-top: 0.7rem">On a small screen, scroll the table horizontally.</p>
+    </div>
+  </section>
+
+  <section class="section" style="background: white; border-block: 1px solid var(--line)" aria-labelledby="ask-title">
+    <div class="container trust-grid">
+      <div>
+        <p class="kicker">Ask</p>
+        <h2 id="ask-title">A reader with the limits printed on it.</h2>
+      </div>
+      <div class="prose">
+        <p>
+          Ask the package and Ask on a document answer from cited sources only. Scope can be the whole package, one department, one batch, or one file. Voice is an input mode. It is not a second authority.
+        </p>
+        <p>
+          The interface states the guardrail in the thread: answers cite source documents only, and pass or fail comes from rules and RA review. A question about whether the package is ready to file is refused, and the reviewer is pointed to readiness gates and Review &amp; Approve.
+        </p>
+        <p>
+          Ask does not create a finding, assign severity, or dispose a package. When a person wants that, the handoff is Raise finding or a side-by-side comparison.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="tier-title">
+    <div class="container">
+      <div class="section-head measure">
+        <p class="kicker">Baselines</p>
+        <h2 id="tier-title">A cross-check is only as strong as its baseline.</h2>
+        <p>
+          Sections carry a trust tier so a carried paragraph is not treated as a checked one. The tier is shown on the package. It is a label on the baseline, not a score for the company.
+        </p>
+      </div>
+      <div class="tier-list">
+        <article class="tier">
+          <p class="tier-id">T0</p>
+          <p><strong>Carried, unverified.</strong> A section brought forward without a source check. The product shows it as carried and unverified. It does not show it as cross-checked.</p>
+        </article>
+        <article class="tier">
+          <p class="tier-id">T1</p>
+          <p><strong>Source document.</strong> A baseline from an ingested source. In the product, Tier 1 records how it was established — for example a guided export of an approved sequence — and that the sequence was ingested.</p>
+        </article>
+        <article class="tier">
+          <p class="tier-id">T2</p>
+          <p><strong>The next tier on the same scale.</strong> Where a baseline is marked T2, the package shows that label with the section. The tier is still a description of the baseline. It is not a waiver, and it is not a filing decision.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="audit-title">
+    <div class="container trust-grid">
+      <div>
+        <p class="kicker">Record</p>
+        <h2 id="audit-title">Attribution you can walk back through.</h2>
+      </div>
+      <div class="prose">
+        <p>
+          Regulated teams need to reconstruct who saw a document, which rule ran, and who disposed a finding. Dossiq is designed with that posture: attributable reads, named rule runs, citations that point at a page, and waivers that require a justification.
+        </p>
+        <p>
+          That is a 21 CFR Part 11 and GxP posture — controls aimed at attribution, audit, and the integrity of the review record. It is a design aim. It is not a certification, and it does not replace validation inside your quality system. What your organization relies on is still your validation, your SOPs, and your disposition.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: white; border-top: 1px solid var(--line)" aria-labelledby="limits-title">
+    <div class="container">
+      <div class="section-head measure">
+        <p class="kicker">Limits</p>
+        <h2 id="limits-title">What we will tell you plainly.</h2>
+      </div>
+      <ul class="limits">
+        <li>Dossiq is not FDA-approved, cleared, or authorized. It is software for the people who prepare a filing.</li>
+        <li>Dossiq does not file, transmit, or correspond with FDA, EMA, or any other agency. There is no autonomous submission.</li>
+        <li>A Part 11 / GxP posture is not a certificate. Your quality unit decides what is validated and what a record is allowed to support.</li>
+        <li>This site publishes no accuracy rates, cycle times, or customer logos. Sample screens are sample screens.</li>
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

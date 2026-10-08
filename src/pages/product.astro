@@ -1,0 +1,212 @@
+---
+import Base from "../layouts/Base.astro";
+import Shot from "../components/Shot.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { siteUrl } from "../data/site";
+import start from "../assets/product/start-variation.png";
+import sources from "../assets/product/source-documents.png";
+import home from "../assets/product/package-home.png";
+import overview from "../assets/product/package-overview.png";
+import findings from "../assets/product/findings-queue.png";
+import review from "../assets/product/doc-review.png";
+import ask from "../assets/product/package-ask.png";
+
+const title = "Dossiq product — Rauzr";
+const description =
+  "How Dossiq reviews a variation package: source inventory, deterministic rules, a findings queue, document review, and cite-only Ask. No autonomous agency filing.";
+
+const software = {
+  "@type": "SoftwareApplication",
+  name: "Dossiq",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: `${siteUrl}/product/`,
+  provider: {
+    "@type": "Organization",
+    name: "Rauzr Inc",
+    url: siteUrl,
+  },
+  description:
+    "Decision support for generic regulatory affairs. Dossiq checks CTD Module 3 consistency on US CBE-30 and EU Type IB variations. Humans file.",
+};
+---
+
+<Base title={title} description={description} jsonLd={software}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="crumb"><a href="/">Rauzr</a> <span aria-hidden="true">/</span> Product</p>
+      <p class="kicker">Dossiq</p>
+      <h1>A variation package, checked before it is filed.</h1>
+      <p class="lead">
+        From the first screen of a new variation to a findings queue and a cite-only question, Dossiq is a review surface for CTD Module 3. It prepares an export. Your regulatory affairs team files.
+      </p>
+      <p class="note">
+        The screens on this page are the product interface filled with a sample variation. They are not a customer engagement and not a measure of performance.
+      </p>
+    </div>
+  </section>
+
+  <section class="tour-block" id="start">
+    <div class="container">
+      <p class="index">01</p>
+      <h2>Start from an approved sequence.</h2>
+      <div class="tour-copy">
+        <p>
+          A variation names its pathway, anchor product, sequence, regions, and the CTD sections it will touch. US CBE-30 and EU Type IB are the pathways Dossiq is built around. The anchor is an approved product and sequence.
+        </p>
+        <p>
+          Scope is explicit: drug substance, drug product, analytical procedures, stability, regional administrative documents. The package can be created or kept as a draft. Nothing is transmitted.
+        </p>
+      </div>
+      <Shot
+        src={start}
+        chrome="Dossiq · Start a variation"
+        alt="Dossiq screen for starting a variation. Fields cover pathway, anchor product and sequence, regions, and CTD scope, with actions to create the package or save a draft."
+      />
+    </div>
+  </section>
+
+  <section class="tour-block" id="sources">
+    <div class="container">
+      <p class="index">02</p>
+      <h2>One inventory for the source documents.</h2>
+      <div class="tour-copy">
+        <p>
+          R&amp;D, QC, and QA documents land in a single list: department, type, version, batch, tier, and status. A row can be read, parsing, queued, or blocked. A scanned specification that produced no text stays blocked. It is not treated as reviewed.
+        </p>
+        <p>
+          Active, reference, and superseded versions stay distinct. Filters cover department, tier, and batch, so a question about one lot does not silently search the whole history.
+        </p>
+      </div>
+      <Shot
+        src={sources}
+        chrome="Dossiq · Source documents"
+        alt="Dossiq source document inventory for a sample variation. Rows list department, document type, version, batch, tier, and status, with filters for department, tier, and batch."
+      />
+    </div>
+  </section>
+
+  <section class="tour-block" id="home">
+    <div class="container">
+      <p class="index">03</p>
+      <h2>Package home is a status, not a score.</h2>
+      <div class="tour-copy">
+        <p>
+          Once the variation exists, home shows blocking findings, major findings still open, major findings waived, and section completeness. Recent activity is attributed: who re-submitted a document, who waived a finding, and that a justification was logged.
+        </p>
+        <p>
+          The baseline sits beside that status, with its trust tier. Tier 1 is a source document — an approved sequence ingested, with the export path recorded. Completeness here describes the sample package on screen. It is not a Rauzr performance figure.
+        </p>
+      </div>
+      <Shot
+        src={home}
+        chrome="Dossiq · Package home"
+        alt="Dossiq package home for a sample variation, with blocking findings, major findings open and waived, section completeness, a CTD section list, baseline trust tier, and recent activity."
+      />
+    </div>
+  </section>
+
+  <section class="tour-block" id="completeness">
+    <div class="container">
+      <p class="index">04</p>
+      <h2>Module 3, section by section.</h2>
+      <div class="tour-copy">
+        <p>
+          The overview lists CTD sections and a state for each: cross-checked against a tier, findings open, or carried and unverified. A carried section is labeled unverified. It is not displayed as a pass.
+        </p>
+        <p>
+          The same screen holds Ask the package, scoped to the whole package, still cite-only. Pass and fail stay with rules and with RA review.
+        </p>
+      </div>
+      <Shot
+        src={overview}
+        chrome="Dossiq · Section completeness"
+        alt="Dossiq overview of CTD Module 3 for a sample Stability Protocol Amendment, including cross-checked sections, open findings, a carried unverified section, a Tier 1 baseline, and the Ask the package panel."
+      />
+    </div>
+  </section>
+
+  <section class="tour-block" id="findings">
+    <div class="container">
+      <p class="index">05</p>
+      <h2>Findings the team can arbitrate.</h2>
+      <div class="tour-copy">
+        <p>
+          The queue filters by severity, status, source, owner, and CTD section. Each row names a rule or marks itself human, and stores linked documents. Critical, major, and minor stay separate. Blocking findings are called out on their own.
+        </p>
+        <p>
+          Inside a finding: the rule id, the documents it used, and a thread. Regulatory affairs can assign, comment, and move state. A waiver requires a justification. RA can also raise a finding the rules did not.
+        </p>
+      </div>
+      <Shot
+        src={findings}
+        chrome="Dossiq · Findings queue"
+        alt="Dossiq findings queue for a sample package. The list shows severity, CTD section, Rule or Human source, owner, and state. The open drawer shows a rule, linked documents, and comments."
+      />
+    </div>
+  </section>
+
+  <section class="tour-block" id="review">
+    <div class="container">
+      <p class="index">06</p>
+      <h2>On the document, marks and a human finding.</h2>
+      <div class="tour-copy">
+        <p>
+          Document review opens the source — a certificate of analysis, a specification, a report — with agent marks on the values the rules are using. A reviewer can agree, keep a mark pending, or dispute it, and can jump to the linked finding.
+        </p>
+        <p>
+          Raise finding is a human action: severity, CTD section, assignee, and a note. Ask on this document is cite-only. It can report what the page says. Disposition goes to the rules or to Raise finding. The model does not judge severity.
+        </p>
+      </div>
+      <Shot
+        src={review}
+        scroll={true}
+        chrome="Dossiq · Document review"
+        alt="Dossiq document review of a sample certificate of analysis. Agent marks highlight assay values. The reviewer can agree, dispute, or raise a human finding. Ask on the document cites that document only."
+      />
+    </div>
+  </section>
+
+  <section class="tour-block" id="ask">
+    <div class="container">
+      <p class="index">07</p>
+      <h2>Ask answers. It does not dispose.</h2>
+      <div class="tour-copy">
+        <p>
+          Ask the package runs over the whole package or a slice: R&amp;D, QC, QA, a batch, a document. A comparison comes back as a table — source, condition, timepoints, assay, impurity, lot — with the file and the page. An observation is labeled as not verified when the check has not been run.
+        </p>
+        <p>
+          “Is this package ready to file?” is refused. The product points to readiness gates and to Review &amp; Approve. Ask does not open a finding. Voice is only another way to type the question.
+        </p>
+        <ul>
+          <li>Citations are document, page, and span.</li>
+          <li>No severity and no automatic finding from a question.</li>
+          <li>Side-by-side and Raise finding are the handoff when a person wants a disposition.</li>
+        </ul>
+      </div>
+      <Shot
+        src={ask}
+        scroll={true}
+        chrome="Dossiq · Ask the package"
+        alt="Dossiq Ask the package showing a cited stability comparison across R and D and QC, an observation marked not verified, and a refusal to judge whether the sample package is ready to file."
+      />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container measure">
+      <p class="kicker">Export</p>
+      <h2>What leaves the system is for the person who files.</h2>
+      <div class="prose" style="margin-top: 1rem">
+        <p>
+          Review &amp; Approve and export are the end of the product’s work. Dossiq can hand a reviewer a package status and a record of findings, citations, and dispositions. It does not transmit a dossier to FDA, EMA, or any other agency.
+        </p>
+        <p>
+          <a href="/approach/">How judgment, tiers, and the audit posture are split</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

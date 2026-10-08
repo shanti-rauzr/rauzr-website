@@ -1,0 +1,17 @@
+---
+import { demoMailto, email } from "../data/site";
+---
+
+<section class="band" aria-labelledby="cta-title">
+  <div class="container">
+    <p class="kicker">Rauzr</p>
+    <h2 id="cta-title">See a package in Dossiq.</h2>
+    <p class="band-copy">
+      Write to Shanti with the pathway you file — US CBE-30, EU Type IB, or both — and whether you want a walkthrough of a sample variation. Your regulatory affairs team keeps the filing.
+    </p>
+    <div class="band-actions">
+      <a class="btn btn-primary" href={demoMailto}>Request a demo</a>
+      <a class="band-mail" href={`mailto:${email}`}>{email}</a>
+    </div>
+  </div>
+</section>

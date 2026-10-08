@@ -1,0 +1,129 @@
+---
+import Base from "../layouts/Base.astro";
+import { demoMailto, email } from "../data/site";
+
+const title = "Company and contact — Rauzr";
+const description =
+  "Rauzr Inc builds agentic decision support for life sciences regulatory work. Based in Hyderabad, with a US presence. Contact Shanti@rauzr.ai.";
+---
+
+<Base title={title} description={description}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="crumb"><a href="/">Rauzr</a> <span aria-hidden="true">/</span> Company</p>
+      <p class="kicker">Rauzr Inc</p>
+      <h1>Software for the people who prepare the filing.</h1>
+      <p class="lead">
+        Rauzr builds agentic systems for regulated life sciences: orchestration across a review, retrieval that can point at a page, and a human on the decision. Dossiq is the product — decision support for generic variation packages.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div>
+        <h2>The work is specific.</h2>
+        <div class="prose" style="margin-top: 1rem">
+          <p>
+            Generic drug variations — a site change, a specification update, a stability protocol amendment — turn on whether Module 3 still agrees with itself and with the last approved sequence. That review is careful, cross-document, and slow.
+          </p>
+          <p>
+            We build for that bottleneck. Agents prepare the package. Humans file. Therapies move when the regulatory work moves, and the regulatory work stays with the people who sign it.
+          </p>
+        </div>
+        <dl class="where">
+          <div>
+            <dt>Headquarters</dt>
+            <dd>Hyderabad, India</dd>
+          </div>
+          <div>
+            <dt>Also</dt>
+            <dd>United States</dd>
+          </div>
+          <div>
+            <dt>Product</dt>
+            <dd>Dossiq</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="form-card" id="contact">
+        <h2 class="form-title">Request a demo</h2>
+        <a class="email-display" href={demoMailto}>{email}</a>
+        <p class="form-note" id="form-help">
+          Or use the form. It opens your email application with the note addressed to Shanti. This site does not store the message.
+        </p>
+        <form id="demo-form" action={demoMailto} method="post" enctype="text/plain">
+          <div class="form-row two">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="email">Work email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="organization">Organization</label>
+            <input id="organization" name="organization" type="text" autocomplete="organization" required />
+          </div>
+          <div class="field">
+            <label for="pathway">Pathway</label>
+            <select id="pathway" name="pathway" required>
+              <option value="" disabled selected>Select a pathway</option>
+              <option>US CBE-30</option>
+              <option>EU Type IB</option>
+              <option>Both US CBE-30 and EU Type IB</option>
+              <option>Another variation type</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="note">What you want to look at</label>
+            <textarea
+              id="note"
+              name="note"
+              required
+              placeholder="For example: stability protocol amendments, and a walkthrough on a sample package."
+            ></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Email Shanti</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+        <noscript>
+          <p class="form-note" style="margin-top: 0.8rem">
+            JavaScript is off. Use <a href={demoMailto}>{email}</a>.
+          </p>
+        </noscript>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const form = document.querySelector("#demo-form");
+  const status = document.querySelector("#form-status");
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!(form instanceof HTMLFormElement)) return;
+    const data = new FormData(form);
+    const name = String(data.get("name") || "").trim();
+    const workEmail = String(data.get("email") || "").trim();
+    const organization = String(data.get("organization") || "").trim();
+    const pathway = String(data.get("pathway") || "").trim();
+    const note = String(data.get("note") || "").trim();
+    const subject = `Dossiq demo request — ${organization}`;
+    const body = [
+      `Name: ${name}`,
+      `Work email: ${workEmail}`,
+      `Organization: ${organization}`,
+      `Pathway: ${pathway}`,
+      "",
+      note,
+    ].join("\n");
+    if (status) {
+      status.textContent = "Opening your email application, addressed to Shanti@rauzr.ai.";
+    }
+    window.location.href = `mailto:Shanti@rauzr.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>

@@ -1,0 +1,36 @@
+---
+import Logo from "./Logo.astro";
+import { demoMailto, disclaimer, email, nav } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="/" aria-label="Rauzr home">
+          <Logo />
+        </a>
+        <p>Agents prepare the dossier. Humans file it. Dossiq is decision support for generic regulatory affairs.</p>
+      </div>
+      <div>
+        <p class="footer-title">Site</p>
+        <div class="footer-links">
+          {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+          <a href="/company/#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-title">Contact</p>
+        <div class="footer-links">
+          <a href={`mailto:${email}`}>{email}</a>
+          <a href={demoMailto}>Request a demo</a>
+          <span>Hyderabad · United States</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <p>{disclaimer}</p>
+      <p>© {new Date().getFullYear()} Rauzr Inc.</p>
+    </div>
+  </div>
+</footer>

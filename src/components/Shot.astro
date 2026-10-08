@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { sampleCaption } from "../data/site";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  chrome: string;
+  caption?: string;
+  scroll?: boolean;
+  eager?: boolean;
+}
+
+const { src, alt, chrome, caption = sampleCaption, scroll = false, eager = false } = Astro.props;
+const widths = [720, 1100, 1440];
+const sizes = "(min-width: 1160px) 1100px, 100vw";
+---
+
+<figure class="shot">
+  <div class="shot-window">
+    <div class="shot-chrome">
+      <span class="shot-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="shot-chrome-title">{chrome}</span>
+      <span class="shot-sample">Sample data</span>
+    </div>
+    {
+      scroll ? (
+        <div class="shot-scroll" tabindex="0" role="region" aria-label={`Scrollable product screenshot: ${chrome}`}>
+          <Image
+            src={src}
+            alt={alt}
+            widths={widths}
+            sizes={sizes}
+            quality={76}
+            format="webp"
+            loading={eager ? "eager" : "lazy"}
+            decoding="async"
+          />
+        </div>
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          widths={widths}
+          sizes={sizes}
+          quality={78}
+          format="webp"
+          loading={eager ? "eager" : "lazy"}
+          decoding="async"
+        />
+      )
+    }
+  </div>
+  {scroll && <p class="scroll-hint">Scroll inside the frame to see the full screen</p>}
+  <figcaption>{caption}</figcaption>
+</figure>
