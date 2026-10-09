@@ -1,4 +1,5 @@
 ---
+import { u } from "../lib/url";
 import Base from "../layouts/Base.astro";
 import Shot from "../components/Shot.astro";
 import CtaBand from "../components/CtaBand.astro";
@@ -34,7 +35,7 @@ const software = {
 <Base title={title} description={description} jsonLd={software}>
   <section class="page-hero">
     <div class="container">
-      <p class="crumb"><a href="/">Rauzr</a> <span aria-hidden="true">/</span> Product</p>
+      <p class="crumb"><a href={u("/")}>Rauzr</a> <span aria-hidden="true">/</span> Product</p>
       <p class="kicker">Dossiq</p>
       <h1>A variation package, checked before it is filed.</h1>
       <p class="lead">
@@ -202,7 +203,7 @@ const software = {
           Review &amp; Approve and export are the end of the product’s work. Dossiq can hand a reviewer a package status and a record of findings, citations, and dispositions. It does not transmit a dossier to FDA, EMA, or any other agency.
         </p>
         <p>
-          <a href="/approach/">How judgment, tiers, and the audit posture are split</a>
+          <a href={u("/approach/")}>How judgment, tiers, and the audit posture are split</a>
         </p>
       </div>
     </div>

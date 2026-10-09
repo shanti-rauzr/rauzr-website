@@ -1,3 +1,4 @@
+import { u } from '../lib/url';
 export const email = 'Shanti@rauzr.ai';
 
 export const demoMailto = `mailto:${email}?subject=${encodeURIComponent('Dossiq demo request')}`;
@@ -5,9 +6,9 @@ export const demoMailto = `mailto:${email}?subject=${encodeURIComponent('Dossiq 
 export const siteUrl = 'https://rauzr.ai';
 
 export const nav = [
-  { href: '/product/', label: 'Product' },
-  { href: '/approach/', label: 'Approach' },
-  { href: '/company/', label: 'Company' },
+  { href: u('/product/'), label: 'Product' },
+  { href: u('/approach/'), label: 'Approach' },
+  { href: u('/company/'), label: 'Company' },
 ] as const;
 
 export const sampleCaption =

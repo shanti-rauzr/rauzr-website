@@ -1,4 +1,5 @@
 ---
+import { u } from "../lib/url";
 import Logo from "./Logo.astro";
 import { demoMailto, disclaimer, email, nav } from "../data/site";
 ---
@@ -7,7 +8,7 @@ import { demoMailto, disclaimer, email, nav } from "../data/site";
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="logo" href="/" aria-label="Rauzr home">
+        <a class="logo" href={u("/")} aria-label="Rauzr home">
           <Logo />
         </a>
         <p>Agents prepare the dossier. Humans file it. Dossiq is decision support for generic regulatory affairs.</p>
@@ -16,7 +17,7 @@ import { demoMailto, disclaimer, email, nav } from "../data/site";
         <p class="footer-title">Site</p>
         <div class="footer-links">
           {nav.map((item) => <a href={item.href}>{item.label}</a>)}
-          <a href="/company/#contact">Contact</a>
+          <a href={u("/company/#contact")}>Contact</a>
         </div>
       </div>
       <div>

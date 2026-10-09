@@ -1,4 +1,5 @@
 ---
+import { u } from "../lib/url";
 import Base from "../layouts/Base.astro";
 import CtaBand from "../components/CtaBand.astro";
 
@@ -10,7 +11,7 @@ const description =
 <Base title={title} description={description}>
   <section class="page-hero">
     <div class="container">
-      <p class="crumb"><a href="/">Rauzr</a> <span aria-hidden="true">/</span> Approach</p>
+      <p class="crumb"><a href={u("/")}>Rauzr</a> <span aria-hidden="true">/</span> Approach</p>
       <p class="kicker">Trust</p>
       <h1>Built so a reviewer can defend the answer.</h1>
       <p class="lead">

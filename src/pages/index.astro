@@ -1,4 +1,5 @@
 ---
+import { u } from "../lib/url";
 import Base from "../layouts/Base.astro";
 import Shot from "../components/Shot.astro";
 import CtaBand from "../components/CtaBand.astro";
@@ -23,7 +24,7 @@ const description =
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href={demoMailto}>Request a demo</a>
-        <a class="btn btn-secondary" href="/product/">See the product</a>
+        <a class="btn btn-secondary" href={u("/product/")}>See the product</a>
       </div>
       <p class="hero-note">Dossiq does not submit to FDA, EMA, or any other agency.</p>
     </div>
@@ -125,7 +126,7 @@ const description =
         <p>
           <strong>Ask the package</strong> sits beside this flow. It reads the same sources and answers with citations. It does not open a finding, set a severity, or record a pass.
         </p>
-        <a class="text-link" href="/approach/">Read the approach</a>
+        <a class="text-link" href={u("/approach/")}>Read the approach</a>
       </aside>
     </div>
   </section>
@@ -158,7 +159,7 @@ const description =
             <li>Blocking, major, and minor stay distinct</li>
             <li>A waiver is logged with a justification</li>
           </ul>
-          <a class="text-link" href="/product/#findings">Open the findings tour</a>
+          <a class="text-link" href={u("/product/#findings")}>Open the findings tour</a>
         </div>
         <Shot
           src={findings}
@@ -177,7 +178,7 @@ const description =
             <li>Ask does not create findings or assign severity</li>
             <li>A readiness question is handed back to RA review</li>
           </ul>
-          <a class="text-link" href="/product/#ask">See Ask on a package</a>
+          <a class="text-link" href={u("/product/#ask")}>See Ask on a package</a>
         </div>
         <Shot
           src={ask}

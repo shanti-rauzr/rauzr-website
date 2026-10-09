@@ -1,4 +1,5 @@
 ---
+import { u } from "../lib/url";
 interface Props {
   title?: string;
 }
@@ -6,5 +7,5 @@ interface Props {
 const { title = "Rauzr" } = Astro.props;
 ---
 
-<img class="logo-mark" src="/favicon.svg" alt="" width="30" height="30" />
+<img class="logo-mark" src={u("/favicon.svg")} alt="" width="30" height="30" />
 <span>{title}</span>

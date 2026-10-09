@@ -1,4 +1,5 @@
 ---
+import { u } from "../lib/url";
 import Base from "../layouts/Base.astro";
 
 const title = "Page not found — Rauzr";
@@ -12,9 +13,9 @@ const description = "That page is not on rauzr.ai.";
       <h1>That page is not on this site.</h1>
       <p class="lead">The dossier you wanted is not here. The product, the approach, and a note to Shanti are.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="/">Back to home</a>
-        <a class="btn btn-secondary" href="/product/">Dossiq</a>
-        <a class="btn btn-secondary" href="/company/#contact">Contact</a>
+        <a class="btn btn-primary" href={u("/")}>Back to home</a>
+        <a class="btn btn-secondary" href={u("/product/")}>Dossiq</a>
+        <a class="btn btn-secondary" href={u("/company/#contact")}>Contact</a>
       </div>
     </div>
   </section>
