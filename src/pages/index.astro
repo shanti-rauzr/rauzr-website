@@ -20,7 +20,7 @@ const description =
       <p class="kicker">Dossiq · Decision support</p>
       <h1>Agents prepare the dossier.<br />Humans file it.</h1>
       <p class="lead">
-        Dossiq checks CTD Module 3 across a generic variation — US CBE-30 and EU Type IB. Claims are extracted. Rules decide. Regulatory affairs files.
+        Dossiq checks CTD Module 3 across a generic variation — US CBE-30 and EU Type IB. Evidence is extracted. Rules decide. Regulatory affairs files.
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href={demoMailto}>Request a demo</a>
@@ -109,12 +109,12 @@ const description =
         <article class="lane">
           <p class="index">01</p>
           <h3>Extract, with a page.</h3>
-          <p>The model reads R&amp;D, QC, QA, and prior filings and pulls a claim only with a citation: document, page, and span. If it cannot cite, it does not answer.</p>
+          <p>The model reads R&amp;D, QC, QA, and prior filings and extracts a fact only with a citation: document, page, and span. If it cannot cite, it does not answer.</p>
         </article>
         <article class="lane">
           <p class="index">02</p>
           <h3>Rules, the same result twice.</h3>
-          <p>Deterministic checks compare those claims. The rule id is stored on the finding. The model does not vote on pass or fail.</p>
+          <p>Deterministic checks compare those facts. The rule id is stored on the finding. The model does not vote on pass or fail.</p>
         </article>
         <article class="lane">
           <p class="index">03</p>
@@ -174,7 +174,7 @@ const description =
           <h3>Cite-only. No disposition.</h3>
           <p>Questions run across the package or a slice — a department, a batch, a document. Answers come back with the file and the page. Voice is another way to ask, with the same limits.</p>
           <ul class="ticks">
-            <li>Every claim needs a document, page, and span</li>
+            <li>Every extracted fact needs a document, page, and span</li>
             <li>Ask does not create findings or assign severity</li>
             <li>A readiness question is handed back to RA review</li>
           </ul>

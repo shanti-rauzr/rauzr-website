@@ -1,5 +1,5 @@
 import { u } from '../lib/url';
-export const email = 'Shanti@rauzr.ai';
+export const email = 'contact@rauzr.ai';
 
 export const demoMailto = `mailto:${email}?subject=${encodeURIComponent('Dossiq demo request')}`;
 

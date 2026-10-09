@@ -5,7 +5,7 @@ import { demoMailto, email } from "../data/site";
 
 const title = "Company and contact — Rauzr";
 const description =
-  "Rauzr Inc builds agentic decision support for life sciences regulatory work. Based in Hyderabad, with a US presence. Contact Shanti@rauzr.ai.";
+  "Rauzr Inc builds agentic decision support for life sciences regulatory work. Based in Hyderabad, with a US presence. Contact contact@rauzr.ai.";
 ---
 
 <Base title={title} description={description}>
@@ -52,7 +52,7 @@ const description =
         <h2 class="form-title">Request a demo</h2>
         <a class="email-display" href={demoMailto}>{email}</a>
         <p class="form-note" id="form-help">
-          Or use the form. It opens your email application with the note addressed to Shanti. This site does not store the message.
+          Or use the form. It opens your email application with the note addressed to contact@rauzr.ai. This site does not store the message.
         </p>
         <form id="demo-form" action={demoMailto} method="post" enctype="text/plain">
           <div class="form-row two">
@@ -88,7 +88,7 @@ const description =
               placeholder="For example: stability protocol amendments, and a walkthrough on a sample package."
             ></textarea>
           </div>
-          <button class="btn btn-primary" type="submit">Email Shanti</button>
+          <button class="btn btn-primary" type="submit">Send email</button>
           <p class="form-status" id="form-status" role="status"></p>
         </form>
         <noscript>
@@ -123,8 +123,8 @@ const description =
       note,
     ].join("\n");
     if (status) {
-      status.textContent = "Opening your email application, addressed to Shanti@rauzr.ai.";
+      status.textContent = "Opening your email application, addressed to contact@rauzr.ai.";
     }
-    window.location.href = `mailto:Shanti@rauzr.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:contact@rauzr.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 </script>
