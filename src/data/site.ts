@@ -6,7 +6,8 @@ export const demoMailto = `mailto:${email}?subject=${encodeURIComponent('Dossiq 
 export const siteUrl = 'https://rauzr.ai';
 
 export const nav = [
-  { href: u('/product/'), label: 'Product' },
+  { href: u('/'), label: 'Home' },
+  { href: u('/product/'), label: 'Dossiq' },
   { href: u('/approach/'), label: 'Approach' },
   { href: u('/company/'), label: 'Company' },
 ] as const;

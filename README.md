@@ -6,7 +6,7 @@ Agents prepare the dossier. Humans file it. Dossiq checks CTD Module 3 consisten
 
 ## Stack
 
-[Astro](https://astro.build) static site, Tailwind CSS, IBM Plex Sans (self-hosted). Product screenshots are optimized to WebP at build time. There is no server runtime. The contact form opens the visitor’s email client addressed to Shanti@rauzr.ai. Nothing is stored on the site.
+[Astro](https://astro.build) static site, Tailwind CSS, IBM Plex Sans (self-hosted). Product screenshots are optimized to WebP at build time. There is no server runtime. The contact form opens the visitor’s email client addressed to contact@rauzr.ai. Nothing is stored on the site.
 
 ## Develop
 

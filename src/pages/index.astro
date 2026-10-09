@@ -4,29 +4,35 @@ import Base from "../layouts/Base.astro";
 import Shot from "../components/Shot.astro";
 import CtaBand from "../components/CtaBand.astro";
 import Marquee from "../components/Marquee.astro";
+import AgentSteps from "../components/AgentSteps.astro";
 import { demoMailto } from "../data/site";
 import overview from "../assets/product/package-overview.png";
 import findings from "../assets/product/findings-queue.png";
 import ask from "../assets/product/package-ask.png";
 
-const title = "Rauzr — Dossiq for regulatory affairs";
+const title = "Rauzr Helix — AI agents for health and life sciences";
 const description =
-  "Dossiq helps generic pharmaceutical regulatory teams check CTD Module 3 consistency for US CBE-30 and EU Type IB. Agents prepare the dossier. Humans file it.";
+  "Rauzr Helix is a platform of AI agents for health and life sciences. Dossiq, the first agent product, prepares CTD Module 3 dossiers for US CBE-30 and EU Type IB, finds discrepancies across R&D, QC, and QA documents, and suggests how to resolve them. Humans decide and file.";
 ---
 
 <Base title={title} description={description}>
   <section class="hero">
     <div class="container">
-      <p class="kicker">Dossiq · Decision support</p>
-      <h1>Agents prepare the dossier.<br />Humans file it.</h1>
+      <a class="hero-pill" href={u("/product/")}>
+        <span class="hero-pill-tag">First agent</span>
+        <span>Dossiq for regulatory affairs</span>
+        <span aria-hidden="true">→</span>
+      </a>
+      <p class="kicker hero-kicker">Rauzr Helix</p>
+      <h1>AI agents for health and life sciences.</h1>
       <p class="lead">
-        Dossiq checks CTD Module 3 across a generic variation — US CBE-30 and EU Type IB. Evidence is extracted. Rules decide. Regulatory affairs files.
+        Rauzr Helix is our platform for agents that do the careful document work of regulated life sciences. Rules find the issues, every fact is cited, and people make the call. Dossiq, for regulatory affairs, is the first.
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href={demoMailto}>Request a demo</a>
-        <a class="btn btn-secondary" href={u("/product/")}>See the product</a>
+        <a class="btn btn-secondary" href={u("/product/")}>Meet Dossiq</a>
       </div>
-      <p class="hero-note">Dossiq does not submit to FDA, EMA, or any other agency.</p>
+      <p class="hero-note">Decision support. Rauzr agents do not submit to FDA, EMA, or any other agency.</p>
     </div>
 
     <div class="hero-stage">
@@ -46,118 +52,65 @@ const description =
     </div>
   </section>
 
-  <section class="fact-strip" aria-label="What Dossiq is built for">
+  <section class="fact-strip" aria-label="Rauzr Helix and Dossiq at a glance">
     <div class="container">
       <dl class="fact-grid">
         <div>
-          <dt>Pathway</dt>
-          <dd>US CBE-30 and EU Type IB</dd>
+          <dt>Platform</dt>
+          <dd>Rauzr Helix</dd>
         </div>
         <div>
-          <dt>Dossier</dt>
-          <dd>CTD Module 3 consistency</dd>
+          <dt>First agent</dt>
+          <dd>Dossiq, for regulatory affairs</dd>
         </div>
         <div>
-          <dt>Team</dt>
-          <dd>Generic regulatory affairs</dd>
+          <dt>Scope today</dt>
+          <dd>CTD Module 3 · US CBE-30 · EU Type IB</dd>
         </div>
         <div>
-          <dt>Disposition</dt>
-          <dd>Owned by the RA reviewer</dd>
+          <dt>Decision</dt>
+          <dd>Owned by your RA reviewer</dd>
         </div>
       </dl>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="gap-title">
+  <section class="section" aria-labelledby="value-title">
     <div class="container">
-      <div class="section-head center">
-        <p class="kicker">The gap</p>
-        <h2 id="gap-title">Packages slip between documents.</h2>
+      <div class="section-head split-head">
+        <div>
+          <p class="kicker">Dossiq · The first Helix agent</p>
+          <h2 id="value-title">More than a prepared dossier. Dossiq finds what disagrees, and suggests the fix.</h2>
+        </div>
         <p class="lead">
-          A specification, a method, a stability summary, and the last approved sequence can disagree while each file looks fine on its own.
+          Generic variation packages slip between documents: a specification, a method, a stability summary, and the last approved sequence can disagree while each file looks fine on its own. Dossiq agents work across all of them.
         </p>
       </div>
-      <div class="split-3">
-        <article>
-          <p class="index">01</p>
-          <h3>Drift across the package</h3>
-          <p>Drug substance specs, analytical validation, stability conclusions, and the regional letter are often read as separate files. Consistency is the second task, and it is easy to leave unfinished.</p>
-        </article>
-        <article>
-          <p class="index">02</p>
-          <h3>A quote is not a decision</h3>
-          <p>A language model can find a sentence and cite a page. The same package should produce the same check every time it is run. That belongs to a rule.</p>
-        </article>
-        <article>
-          <p class="index">03</p>
-          <h3>A waiver has a name</h3>
-          <p>When a finding is waived or a limit is accepted, the record needs the person, the rule, and the line in the source. Regulatory affairs can defend that.</p>
-        </article>
-      </div>
+      <AgentSteps />
     </div>
   </section>
 
-  <section class="section section-alt" aria-labelledby="lanes-title">
+  <section class="section section-alt" aria-labelledby="trust-title">
     <div class="container">
-      <div class="section-head center">
-        <p class="kicker">Judgment</p>
-        <h2 id="lanes-title">Three kinds of work. Three owners.</h2>
-        <p class="lead">Extraction can be a model. A pass or a fail is a rule, or it is a regulatory affairs reviewer.</p>
-      </div>
-      <div class="lanes">
-        <article class="lane">
-          <p class="index">01</p>
-          <h3>Extract, with a page.</h3>
-          <p>The model reads R&amp;D, QC, QA, and prior filings and extracts a fact only with a citation: document, page, and span. If it cannot cite, it does not answer.</p>
-        </article>
-        <article class="lane">
-          <p class="index">02</p>
-          <h3>Rules, the same result twice.</h3>
-          <p>Deterministic checks compare those facts. The rule id is stored on the finding. The model does not vote on pass or fail.</p>
-        </article>
-        <article class="lane">
-          <p class="index">03</p>
-          <h3>Regulatory affairs disposes.</h3>
-          <p>The queue shows source as Rule or Human. Agree, dispute, waive with a justification, or raise a finding yourself.</p>
-        </article>
-      </div>
-      <aside class="aside-note">
-        <p>
-          <strong>Ask the package</strong> sits beside this flow. It reads the same sources and answers with citations. It does not open a finding, set a severity, or record a pass.
+      <div class="section-head split-head">
+        <div>
+          <p class="kicker">Trust model</p>
+          <h2 id="trust-title">Rules find it. You verify it by asking.</h2>
+        </div>
+        <p class="lead">
+          Findings come from deterministic rules, not a model's opinion: the same package produces the same result every time. Any finding can be double-checked in seconds by asking a question and reading the cited page.
         </p>
-        <a class="text-link" href={u("/approach/")}>Read the approach</a>
-      </aside>
-    </div>
-  </section>
-
-  <section class="pull" aria-label="How Dossiq treats judgment">
-    <div class="container">
-      <blockquote>
-        <p>Pass or fail is a rule, or it is a person.</p>
-      </blockquote>
-      <hr class="pull-rule" />
-      <p class="pull-sub">Dossiq keeps those two sources of judgment separate, and named on the record.</p>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top: 2rem" aria-labelledby="surfaces-title">
-    <div class="container">
-      <div class="section-head center">
-        <p class="kicker">In the product</p>
-        <h2 id="surfaces-title">The review stays on one package.</h2>
-        <p class="lead">Screens are the Dossiq interface with sample data. They are not customer work and not performance claims.</p>
       </div>
 
-      <div class="surface">
+      <div class="surface surface-tight">
         <div class="surface-copy">
-          <p class="index">Queue</p>
-          <h3>Findings the team can arbitrate.</h3>
+          <p class="index">Rules</p>
+          <h3>Every finding names its rule.</h3>
           <p>Severity, CTD section, owner, and state sit on every row. Source is Rule or Human. The drawer keeps the rule id, the linked documents, and the thread.</p>
           <ul class="ticks">
-            <li>Filter by severity, status, source, owner, and section</li>
+            <li>Same inputs, same result. The model does not vote on pass or fail.</li>
             <li>Blocking, major, and minor stay distinct</li>
-            <li>A waiver is logged with a justification</li>
+            <li>Agree, dispute, or waive with a logged justification</li>
           </ul>
           <a class="text-link" href={u("/product/#findings")}>Open the findings tour</a>
         </div>
@@ -168,13 +121,13 @@ const description =
         />
       </div>
 
-      <div class="surface reverse">
+      <div class="surface surface-tight reverse">
         <div class="surface-copy">
           <p class="index">Ask</p>
-          <h3>Cite-only. No disposition.</h3>
-          <p>Questions run across the package or a slice — a department, a batch, a document. Answers come back with the file and the page. Voice is another way to ask, with the same limits.</p>
+          <h3>Doubt a finding? Ask the package.</h3>
+          <p>Ask runs over the whole package or a slice — a department, a batch, a document — and answers only with citations: document, page, and span. If it cannot cite, it does not answer.</p>
           <ul class="ticks">
-            <li>Every extracted fact needs a document, page, and span</li>
+            <li>“What does the stability report conclude for this lot?” comes back with the page</li>
             <li>Ask does not create findings or assign severity</li>
             <li>A readiness question is handed back to RA review</li>
           </ul>
@@ -190,11 +143,47 @@ const description =
     </div>
   </section>
 
+  <section class="statement" aria-labelledby="statement-title">
+    <div class="container statement-grid">
+      <div class="statement-lead">
+        <p class="kicker">Judgment</p>
+        <h2 id="statement-title">Rules flag it. People decide.</h2>
+        <p>Every finding has a rule and a citation. Dossiq keeps machine checks and human judgment separate, and named on the record.</p>
+      </div>
+      <ol class="owners">
+        <li>
+          <span class="owner-tag">Model</span>
+          <div>
+            <h3>Extracts, with a page.</h3>
+            <p>Reads R&amp;D, QC, QA, and prior filings. A fact without a document, page, and span is not an answer.</p>
+          </div>
+        </li>
+        <li>
+          <span class="owner-tag">Rules</span>
+          <div>
+            <h3>Find the discrepancy.</h3>
+            <p>Deterministic checks compare those facts. The rule id is stored on the finding.</p>
+          </div>
+        </li>
+        <li>
+          <span class="owner-tag">RA</span>
+          <div>
+            <h3>Decides and files.</h3>
+            <p>Agree, dispute, waive with a justification, or raise a finding the rules did not.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
   <section class="section section-alt" aria-labelledby="guard-title">
     <div class="container">
-      <div class="section-head center">
-        <p class="kicker">On the screen</p>
-        <h2 id="guard-title">The product says this to the reviewer.</h2>
+      <div class="section-head split-head">
+        <div>
+          <p class="kicker">On the screen</p>
+          <h2 id="guard-title">The product says this to the reviewer.</h2>
+        </div>
+        <p class="lead">Screens are the Dossiq interface with sample data. They are not customer work and not a performance claim.</p>
       </div>
       <div class="quote-grid">
         <figure class="quote">
@@ -210,6 +199,39 @@ const description =
           <footer>Ask the package</footer>
         </figure>
       </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="roadmap-title">
+    <div class="container">
+      <div class="section-head split-head">
+        <div>
+          <p class="kicker">What's next on Rauzr Helix</p>
+          <h2 id="roadmap-title">Dossiq first. More agents to follow.</h2>
+        </div>
+        <p class="lead">
+          Helix is the umbrella for our life sciences agents. Each one is built on the same foundation: cited evidence, deterministic rules, and a person on the decision.
+        </p>
+      </div>
+      <div class="roadmap">
+        <article class="road road-now">
+          <p class="road-status">Available now</p>
+          <h3>Dossiq</h3>
+          <p>Regulatory affairs: prepares CTD Module 3, finds discrepancies, and suggests resolutions for US CBE-30 and EU Type IB.</p>
+          <a class="text-link" href={u("/product/")}>Explore Dossiq</a>
+        </article>
+        <article class="road">
+          <p class="road-status planned">Planned · Coming later</p>
+          <h3>Full RIM</h3>
+          <p>Regulatory Information Management beyond a single variation package.</p>
+        </article>
+        <article class="road">
+          <p class="road-status planned">Planned · Coming later</p>
+          <h3>More Helix agents</h3>
+          <p>Further agents for health and life sciences on the same rules-and-citations foundation.</p>
+        </article>
+      </div>
+      <p class="road-note">Planned products are direction, not commitments. No release dates are announced.</p>
     </div>
   </section>
 

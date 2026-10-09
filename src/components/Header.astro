@@ -6,6 +6,7 @@ import { demoMailto, nav } from "../data/site";
 const current = Astro.url.pathname;
 
 function isCurrent(href: string) {
+  if (href === u("/")) return current === href;
   return current === href || current.startsWith(href);
 }
 ---

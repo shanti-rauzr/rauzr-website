@@ -1,0 +1,52 @@
+---
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+
+const steps = [
+  {
+    n: "01",
+    verb: "Prepare",
+    title: "Assemble the dossier from source.",
+    body: "Agents read R&D, QC, and QA documents and the last approved sequence, and build the CTD Module 3 package for the variation. Every extracted fact carries a document, page, and span.",
+    example: "Drug substance spec, analytical method, stability report, and regional letter, gathered into one package.",
+  },
+  {
+    n: "02",
+    verb: "Find discrepancies",
+    title: "Surface what disagrees across documents.",
+    body: "Deterministic rules compare the facts across departments and against the approved baseline. Each mismatch becomes a finding with its rule id and both sources linked.",
+    example: "A spec limit the analytical method does not test to. A stability conclusion the data does not support. Impurity wording that differs between spec and release text.",
+  },
+  {
+    n: "03",
+    verb: "Suggest resolution",
+    title: "Propose how to fix it, with the sources.",
+    body: "For each finding, the agent drafts a resolution and points at the pages it relies on. Regulatory affairs accepts, edits, or rejects it, and files outside Dossiq.",
+    example: "Align the method's acceptance criterion to the current spec. Restate the shelf-life to the supported timepoint. Harmonize the impurity name in the release text.",
+  },
+];
+---
+
+<ol class:list={["steps", { "steps-compact": compact }]}>
+  {
+    steps.map((step) => (
+      <li class="step">
+        <div class="step-top">
+          <span class="step-n">{step.n}</span>
+          <span class="step-verb">{step.verb}</span>
+        </div>
+        <h3>{step.title}</h3>
+        <p>{step.body}</p>
+        <p class="step-example">
+          <span>For example</span>
+          {step.example}
+        </p>
+      </li>
+    ))
+  }
+</ol>
+<p class="steps-foot">
+  <strong>People stay on the decision.</strong> Dossiq prepares, finds, and suggests. Your regulatory affairs team decides every disposition and files with the agency. Dossiq never submits.
+</p>

@@ -1,6 +1,6 @@
 # Rauzr marketing site
 
-Static Astro site for https://rauzr.ai. Keep the teal brand (`#0F766E`), IBM Plex Sans, and Dossiq messaging. Do not add customer logos, invented metrics, FDA-approval claims, or any statement that the product files with a regulatory agency. Contact is Shanti@rauzr.ai.
+Static Astro site for https://rauzr.ai. Keep the teal brand (`#0F766E`), IBM Plex Sans, and Dossiq messaging. Do not add customer logos, invented metrics, FDA-approval claims, or any statement that the product files with a regulatory agency. Contact is contact@rauzr.ai. Rauzr Helix is the umbrella platform (AI agents for health and life sciences); Dossiq is the first product. Roadmap items (e.g. Full RIM) are labeled planned, with no dates.
 
 ## Development
 
