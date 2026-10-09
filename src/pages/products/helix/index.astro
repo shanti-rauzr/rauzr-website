@@ -1,0 +1,139 @@
+---
+import { Image } from "astro:assets";
+import { u } from "../../../lib/url";
+import Base from "../../../layouts/Base.astro";
+import CtaBand from "../../../components/CtaBand.astro";
+import Shot from "../../../components/Shot.astro";
+import { siteUrl } from "../../../data/site";
+import helix from "../../../assets/visuals/helix.png";
+import howAgents from "../../../assets/visuals/how-agents.png";
+import howRules from "../../../assets/visuals/how-rules.png";
+import howPeople from "../../../assets/visuals/how-people.png";
+import overview from "../../../assets/product/package-overview.png";
+
+const title = "Rauzr Helix — agents for health and life sciences | Rauzr";
+const description =
+  "Rauzr Helix is Rauzr's agent platform for health and life sciences. Agents prepare the work, find issues with deterministic rules, cite every fact, and suggest resolutions; people review and decide. First agent: Dossiq for regulatory affairs.";
+
+const product = {
+  "@type": "SoftwareApplication",
+  name: "Rauzr Helix",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: `${siteUrl}/products/helix/`,
+  provider: { "@type": "Organization", name: "Rauzr Inc", url: siteUrl },
+  description: "Agent platform for health and life sciences. Agents do the work; humans review.",
+};
+
+const pattern = [
+  { img: howAgents, k: "Prepare", t: "Agents do the work.", b: "Read source documents, assemble the work product, and compare facts across departments and prior approvals." },
+  { img: howRules, k: "Find and cite", t: "Rules find issues. Citations prove them.", b: "Deterministic rules flag discrepancies, each with a rule id and the document, page, and span it relied on. Ask a question to verify." },
+  { img: howPeople, k: "Suggest and decide", t: "Agents suggest. People decide.", b: "Each finding comes with a suggested resolution. Your expert agrees, edits, disputes, or waives with a reason." },
+];
+---
+
+<Base title={title} description={description} jsonLd={product}>
+  <section class="page-hero helix-hero">
+    <div class="container helix-hero-grid">
+      <div>
+        <p class="crumb"><a href={u("/products/")}>Products</a> <span aria-hidden="true">/</span> Rauzr Helix</p>
+        <p class="kicker">Rauzr Helix</p>
+        <h1>Agents for health and life sciences.</h1>
+        <p class="lead">
+          Helix is Rauzr's agent platform for regulated life sciences work. Every Helix agent follows the same pattern: do the work, find issues with rules, cite every fact, and hand the decision to a person.
+        </p>
+        <div class="hero-actions left">
+          <a class="btn btn-primary" href={u("/products/helix/dossiq/")}>Meet Dossiq</a>
+          <a class="btn btn-secondary" href="#roadmap">See what's next</a>
+        </div>
+      </div>
+      <div class="helix-art">
+        <Image
+          src={helix}
+          alt="Abstract Rauzr Helix visual: a double helix made of small document cards, tagged Dossiq available, Full RIM planned, and more agents planned."
+          widths={[720, 1200, 2000]}
+          sizes="(min-width: 960px) 600px, 100vw"
+          loading="eager"
+          quality={80}
+          format="webp"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" aria-labelledby="pattern-title">
+    <div class="container">
+      <div class="section-head split-head">
+        <div>
+          <p class="kicker">The Helix agent pattern</p>
+          <h2 id="pattern-title">One pattern, every agent.</h2>
+        </div>
+        <p class="lead">Whatever the domain, a Helix agent's output is checkable: a rule, a citation, and a named person on the decision.</p>
+      </div>
+      <div class="how-grid">
+        {
+          pattern.map((p, i) => (
+            <article class="how-card">
+              <div class="how-art">
+                <Image src={p.img} alt="" widths={[480, 720, 1280]} sizes="(min-width: 960px) 380px, 100vw" quality={80} format="webp" />
+              </div>
+              <div class="how-body">
+                <p class="index">{`0${i + 1} · ${p.k}`}</p>
+                <h3>{p.t}</h3>
+                <p>{p.b}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="dossiq-title">
+    <div class="container surface">
+      <div class="surface-copy">
+        <p class="road-status">First agent · Available now</p>
+        <h2 id="dossiq-title" class="surface-h2">Dossiq, for regulatory affairs.</h2>
+        <p>Dossiq prepares CTD Module 3 for generic variations — US CBE-30 and EU Type IB — finds discrepancies across R&amp;D, QC, and QA documents, and suggests how to resolve them. Your regulatory affairs team decides and files.</p>
+        <a class="text-link" href={u("/products/helix/dossiq/")}>Explore Dossiq</a>
+      </div>
+      <Shot
+        src={overview}
+        chrome="Dossiq · Package overview"
+        alt="Dossiq package overview for a sample Stability Protocol Amendment, with findings counts, section completeness, a CTD Module 3 list, and an Ask the package panel."
+      />
+    </div>
+  </section>
+
+  <section class="section section-alt" id="roadmap" aria-labelledby="roadmap-title">
+    <div class="container">
+      <div class="section-head split-head">
+        <div>
+          <p class="kicker">What's next on Helix</p>
+          <h2 id="roadmap-title">Dossiq first. More agents to follow.</h2>
+        </div>
+        <p class="lead">Planned products share the same foundation. They are direction, not commitments, and no release dates are announced.</p>
+      </div>
+      <div class="roadmap">
+        <article class="road road-now">
+          <p class="road-status">Available now</p>
+          <h3>Dossiq</h3>
+          <p>Regulatory affairs: prepares CTD Module 3, finds discrepancies, and suggests resolutions for US CBE-30 and EU Type IB.</p>
+          <a class="text-link" href={u("/products/helix/dossiq/")}>Explore Dossiq</a>
+        </article>
+        <article class="road">
+          <p class="road-status planned">Planned · Coming later</p>
+          <h3>Full RIM</h3>
+          <p>Regulatory Information Management beyond a single variation package.</p>
+        </article>
+        <article class="road">
+          <p class="road-status planned">Planned · Coming later</p>
+          <h3>More Helix agents</h3>
+          <p>Further agents for health and life sciences on the same rules-and-citations foundation.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

@@ -1,7 +1,7 @@
 ---
 import { u } from "../lib/url";
 import Logo from "./Logo.astro";
-import { demoMailto, disclaimer, email, nav } from "../data/site";
+import { demoMailto, disclaimer, email } from "../data/site";
 ---
 
 <footer class="site-footer">
@@ -11,12 +11,23 @@ import { demoMailto, disclaimer, email, nav } from "../data/site";
         <a class="logo" href={u("/")} aria-label="Rauzr home">
           <Logo />
         </a>
-        <p>Rauzr Helix: AI agents for health and life sciences. Dossiq, the first, prepares the dossier, finds discrepancies, and suggests resolutions. Humans decide and file.</p>
+        <p>Bring AI to health and life sciences. Agents do the work. Humans review.</p>
       </div>
       <div>
-        <p class="footer-title">Site</p>
+        <p class="footer-title">Products</p>
         <div class="footer-links">
-          {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+          <a href={u("/products/")}>All products</a>
+          <a href={u("/products/helix/")}>Rauzr Helix</a>
+          <a class="footer-child" href={u("/products/helix/dossiq/")}>Dossiq</a>
+          <span class="footer-child">Full RIM · planned</span>
+        </div>
+      </div>
+      <div>
+        <p class="footer-title">Company</p>
+        <div class="footer-links">
+          <a href={u("/")}>Home</a>
+          <a href={u("/approach/")}>How it works</a>
+          <a href={u("/company/")}>About Rauzr</a>
           <a href={u("/company/#contact")}>Contact</a>
         </div>
       </div>
@@ -25,7 +36,7 @@ import { demoMailto, disclaimer, email, nav } from "../data/site";
         <div class="footer-links">
           <a href={`mailto:${email}`}>{email}</a>
           <a href={demoMailto}>Request a demo</a>
-          <span>Hyderabad · United States</span>
+          <span>Hyderabad · serving teams worldwide</span>
         </div>
       </div>
     </div>

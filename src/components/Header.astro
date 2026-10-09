@@ -5,9 +5,10 @@ import { demoMailto, nav } from "../data/site";
 
 const current = Astro.url.pathname;
 
-function isCurrent(href: string) {
+function isCurrent(href: string, match?: string) {
   if (href === u("/")) return current === href;
-  return current === href || current.startsWith(href);
+  const m = match ?? href;
+  return current === m || current.startsWith(m);
 }
 ---
 
@@ -19,11 +20,36 @@ function isCurrent(href: string) {
 
     <nav class="nav-desktop" aria-label="Primary">
       {
-        nav.map((item) => (
-          <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
-            {item.label}
-          </a>
-        ))
+        nav.map((item) =>
+          item.children ? (
+            <div class="nav-drop">
+              <a
+                href={item.href}
+                class="nav-drop-trigger"
+                aria-haspopup="true"
+                aria-current={isCurrent(item.href, item.match) ? "page" : undefined}
+              >
+                {item.label}
+                <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </a>
+              <div class="nav-drop-panel">
+                {item.children.map((c) => (
+                  <a href={c.href} class:list={["drop-link", { "drop-child": c.depth === 1 }]}>
+                    <span class="drop-label">
+                      {c.label}
+                      {c.status && <em class:list={["drop-status", { planned: c.status === "Planned" }]}>{c.status}</em>}
+                    </span>
+                    <span class="drop-note">{c.note}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
+              {item.label}
+            </a>
+          )
+        )
       }
     </nav>
 
@@ -37,13 +63,31 @@ function isCurrent(href: string) {
         <nav aria-label="Mobile">
           {
             nav.map((item) => (
-              <a
-                class="nav-link"
-                href={item.href}
-                aria-current={isCurrent(item.href) ? "page" : undefined}
-              >
-                {item.label}
-              </a>
+              <>
+                <a
+                  class="nav-link"
+                  href={item.href}
+                  aria-current={current === item.href ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+                {item.children && (
+                  <div class="nav-sub">
+                    {item.children
+                      .filter((c) => c.href !== item.href)
+                      .map((c) => (
+                        <a
+                          class:list={["nav-sublink", { "nav-sublink-child": c.depth === 1 }]}
+                          href={c.href}
+                          aria-current={current === c.href ? "page" : undefined}
+                        >
+                          {c.label}
+                          {c.status && <em class:list={["drop-status", { planned: c.status === "Planned" }]}>{c.status}</em>}
+                        </a>
+                      ))}
+                  </div>
+                )}
+              </>
             ))
           }
         </nav>

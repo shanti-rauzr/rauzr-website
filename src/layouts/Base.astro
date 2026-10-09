@@ -23,12 +23,19 @@ const organization = {
   email,
   logo: new URL("/apple-touch-icon.png", siteUrl).toString(),
   description:
-    "Rauzr builds Rauzr Helix, a platform of AI agents for health and life sciences. Dossiq, the first agent product, helps generic regulatory affairs teams prepare CTD Module 3 for US CBE-30 and EU Type IB variations, find discrepancies, and resolve them.",
+    "Rauzr brings AI to health and life sciences. Agents do the work; humans review. Rauzr Helix is the company's agent platform for health and life sciences, and Dossiq, for regulatory affairs, is its first agent.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Hyderabad",
     addressCountry: "IN",
   },
+};
+
+const website = {
+  "@type": "WebSite",
+  name: "Rauzr",
+  url: siteUrl,
+  description: "Rauzr — AI agents for health and life sciences",
 };
 
 const extra = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
@@ -41,7 +48,7 @@ function withoutContext(entry: Record<string, unknown>) {
 
 const json = JSON.stringify({
   "@context": "https://schema.org",
-  "@graph": [withoutContext(organization), ...extra.map((entry) => withoutContext(entry))],
+  "@graph": [withoutContext(organization), website, ...extra.map((entry) => withoutContext(entry))],
 }).replace(/</g, "\\u003c");
 ---
 
@@ -68,12 +75,12 @@ const json = JSON.stringify({
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Rauzr. Agents prepare the dossier. Humans file it." />
+    <meta property="og:image:alt" content="Rauzr. Bring AI to health and life sciences. Agents do the work. Humans review." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Rauzr. Agents prepare the dossier. Humans file it." />
+    <meta name="twitter:image:alt" content="Rauzr. Bring AI to health and life sciences. Agents do the work. Humans review." />
     <script type="application/ld+json" set:html={json} />
   </head>
   <body>

@@ -67,3 +67,17 @@ The site lives at the repository root. Astro `base` and Vite `base` are both `/`
 ## Copy boundaries
 
 Do not add customer logos, invented metrics, or claims that Dossiq files with an agency or is FDA-approved. Sample screenshots are labeled as sample data.
+
+## Visuals
+
+Brand illustrations (hero, how-it-works cards, Helix, OG image) are original HTML/CSS/SVG compositions in `visuals-src/`, rendered to PNG with Playwright:
+
+```
+PLAYWRIGHT_DIR=/path/with/node_modules/playwright node visuals-src/render.mjs [hero how-agents how-rules how-people helix og]
+```
+
+Output goes to `src/assets/visuals/` (optimized to WebP by Astro at build) and `public/og.png`.
+
+## Site map
+
+`/` · `/products/` · `/products/helix/` · `/products/helix/dossiq/` · `/approach/` (How it works) · `/company/`. `/product/` is a meta-refresh redirect to `/products/helix/dossiq/`.

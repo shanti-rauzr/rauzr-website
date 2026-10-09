@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="how.css">
+<style>
+.doc { left: 54px; top: 58px; width: 260px; padding: 18px 18px 20px; transform: rotate(-2deg); }
+.doc .lines i:nth-child(2){width:90%} .doc .lines i:nth-child(5){width:64%}
+.hlbox { position:relative; margin-top: 12px; padding: 8px 10px; border-radius: 8px; background: rgba(245,180,60,.18); outline: 2px solid rgba(245,180,60,.6); font-size: 12.5px; color:#7a4a00; font-weight:600 }
+.rule { left: 300px; top: 150px; width: 290px; padding: 18px 18px 16px; }
+.row { display:flex; align-items:center; gap:10px; padding: 9px 0; border-top: 1px solid var(--line); font-size: 13.5px; }
+.row:first-of-type { border-top: 0 }
+.ok, .no { width: 20px; height: 20px; border-radius: 50%; display:grid; place-items:center; flex:none }
+.ok { background: var(--tint); } .no { background: #fff1dc; }
+.cite { position:absolute; left: 200px; top: 330px; }
+</style></head><body><div class="stage"><div class="grid"></div>
+<div class="glow" style="left:300px;top:150px;width:300px;height:200px;background:rgba(95,211,196,.3)"></div>
+<div class="card doc"><span class="label">Source · page 4</span><div class="lines"><i class="t"></i><i></i><i></i></div><div class="hlbox">Highlighted span</div><div class="lines"><i></i><i></i></div></div>
+<svg style="position:absolute;inset:0" viewBox="0 0 640 440"><path d="M250 190 C 290 190, 280 230, 305 235" fill="none" stroke="#0f766e" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round" stroke-opacity=".6"/></svg>
+<div class="card rule">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span class="t">Deterministic rules</span><span class="chip teal" style="font-size:11px">Same result twice</span></div>
+  <div class="row"><span class="ok"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linecap="round"><path d="M2 6.5l2.6 2.5L10 3"/></svg></span>Spec matches method</div>
+  <div class="row"><span class="no"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#b45309" stroke-width="2.4" stroke-linecap="round"><path d="M6 2v5M6 10v.1"/></svg></span>Stability conclusion vs data</div>
+  <div class="row"><span class="ok"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linecap="round"><path d="M2 6.5l2.6 2.5L10 3"/></svg></span>Impurity wording aligned</div>
+</div>
+<div class="cite"><span class="chip ghost mono" style="box-shadow:0 10px 24px -12px rgba(11,18,32,.35);font-size:12.5px">doc · page · span</span></div>
+</div></body></html>

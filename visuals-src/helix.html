@@ -1,0 +1,50 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+:root { --w: 1200px; --h: 800px; }
+.stage { background: radial-gradient(ellipse 60% 60% at 50% 50%, #12403f 0%, rgba(18,64,63,0) 70%), linear-gradient(160deg, #0b1220 0%, #0f1d33 55%, #0b1a24 100%); }
+.grid { background-image: linear-gradient(rgba(95,211,196,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(95,211,196,.07) 1px, transparent 1px); background-size: 40px 40px; }
+.tag { position:absolute; padding: 9px 14px; border-radius: 14px; background: rgba(255,255,255,.96); box-shadow: 0 20px 40px -16px rgba(0,0,0,.55); display:flex; align-items:center; gap:10px; font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+.tag small { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; }
+.now small { background: var(--teal); color: #fff; }
+.plan { background: rgba(255,255,255,.1); color: #e6eef3; border: 1px dashed rgba(255,255,255,.3); box-shadow: none; }
+.plan small { background: rgba(255,255,255,.12); color: #b8c5d1; }
+.title { position:absolute; left: 70px; top: 60px; color: #fff; }
+.title b { display:block; font-size: 30px; font-weight: 600; letter-spacing: -.03em; }
+.title span { color: var(--teal-3); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+</style></head><body><div class="stage"><div class="grid"></div>
+<div class="glow" style="left:350px;top:250px;width:500px;height:300px;background:rgba(20,163,151,.28)"></div>
+<svg id="s" style="position:absolute;inset:0" viewBox="0 0 1200 800"></svg>
+<div class="tag now" style="left:250px;top:560px"><small>Available</small>Dossiq</div>
+<div class="tag plan" style="left:560px;top:190px"><small>Planned</small>Full RIM</div>
+<div class="tag plan" style="left:840px;top:575px"><small>Planned</small>More agents</div>
+<script>
+const s = document.getElementById('s'); const NS = 'http://www.w3.org/2000/svg';
+const el = (t, a, p = s) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); p.appendChild(e); return e; };
+const defs = el('defs', {});
+const lg = el('linearGradient', { id: 'st', x1: 0, x2: 1 }, defs);
+el('stop', { offset: 0, 'stop-color': '#5fd3c4', 'stop-opacity': .1 }, lg); el('stop', { offset: .5, 'stop-color': '#5fd3c4', 'stop-opacity': .9 }, lg); el('stop', { offset: 1, 'stop-color': '#5fd3c4', 'stop-opacity': .1 }, lg);
+const x0 = 60, x1 = 1140, cy = 410, A = 130, k = (2 * Math.PI) / 520;
+const N = 30, items = [];
+for (let strand = 0; strand < 2; strand++) {
+  let d = '';
+  for (let x = x0; x <= x1; x += 6) { const y = cy + A * Math.sin(k * x + strand * Math.PI); d += (x === x0 ? 'M' : 'L') + x + ' ' + y.toFixed(1); }
+  el('path', { d, fill: 'none', stroke: 'url(#st)', 'stroke-width': 2 });
+}
+for (let i = 0; i < N; i++) {
+  const x = x0 + 20 + i * ((x1 - x0 - 40) / (N - 1));
+  const ya = cy + A * Math.sin(k * x), yb = cy + A * Math.sin(k * x + Math.PI);
+  const za = Math.cos(k * x), zb = -za;
+  const edge = Math.min(1, Math.min(x - x0, x1 - x) / 220);
+  el('line', { x1: x, y1: ya, x2: x, y2: yb, stroke: '#5fd3c4', 'stroke-opacity': (0.18 * edge).toFixed(2), 'stroke-width': 1.5, 'stroke-dasharray': '2 5' });
+  items.push({ x, y: ya, z: za, e: edge }, { x, y: yb, z: zb, e: edge });
+}
+items.sort((a, b) => a.z - b.z);
+for (const it of items) {
+  const sc = 0.62 + 0.38 * (it.z + 1) / 2, w = 30 * sc, h = 38 * sc, op = (0.35 + 0.65 * (it.z + 1) / 2) * it.e;
+  const g = el('g', { transform: `translate(${it.x - w / 2} ${it.y - h / 2})`, opacity: op.toFixed(2) });
+  const front = it.z > 0.2;
+  el('rect', { width: w, height: h, rx: 5 * sc, fill: front ? '#ffffff' : '#bfe7e1', stroke: 'rgba(95,211,196,.6)', 'stroke-width': front ? 0 : 1 }, g);
+  for (let l = 0; l < 3; l++) el('rect', { x: 5 * sc, y: (8 + l * 8) * sc, width: (l === 0 ? 14 : 20 - l * 3) * sc, height: 3 * sc, rx: 1.5, fill: l === 0 ? '#0f766e' : '#c9d4de' }, g);
+}
+</script>
+</div></body></html>

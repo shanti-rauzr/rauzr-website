@@ -1,14 +1,29 @@
 ---
 import { demoMailto, email } from "../data/site";
+
+interface Props {
+  variant?: "company" | "dossiq";
+}
+const { variant = "company" } = Astro.props;
+const copy =
+  variant === "dossiq"
+    ? {
+        kicker: "Rauzr Helix · Dossiq",
+        title: "See a package in Dossiq.",
+        body: "Write to us with the pathway you file — US CBE-30, EU Type IB, or both — and whether you want a walkthrough of a sample variation. Your regulatory affairs team keeps the filing.",
+      }
+    : {
+        kicker: "Contact",
+        title: "Bring agents to your regulated work.",
+        body: "Tell us about your team and the work you want agents to take on. We work with health and life sciences teams worldwide.",
+      };
 ---
 
 <section class="band" aria-labelledby="cta-title">
   <div class="container">
-    <p class="kicker">Rauzr Helix · Dossiq</p>
-    <h2 id="cta-title">See a package in Dossiq.</h2>
-    <p class="band-copy">
-      Write to us at contact@rauzr.ai with the pathway you file — US CBE-30, EU Type IB, or both — and whether you want a walkthrough of a sample variation. Your regulatory affairs team keeps the filing.
-    </p>
+    <p class="kicker">{copy.kicker}</p>
+    <h2 id="cta-title">{copy.title}</h2>
+    <p class="band-copy">{copy.body}</p>
     <div class="band-actions">
       <a class="btn btn-primary" href={demoMailto}>Request a demo</a>
       <a class="band-mail" href={`mailto:${email}`}>{email}</a>

@@ -5,7 +5,7 @@ import { demoMailto, email } from "../data/site";
 
 const title = "Company and contact — Rauzr";
 const description =
-  "Rauzr Inc builds Rauzr Helix, AI agents for health and life sciences. Dossiq for regulatory affairs is the first product. Based in Hyderabad, with a US presence. Contact contact@rauzr.ai.";
+  "Rauzr Inc brings AI to health and life sciences: agents do the work, humans review. Rauzr Helix is our first product. Based in Hyderabad, serving teams worldwide. Contact contact@rauzr.ai.";
 ---
 
 <Base title={title} description={description}>
@@ -13,9 +13,9 @@ const description =
     <div class="container">
       <p class="crumb"><a href={u("/")}>Rauzr</a> <span aria-hidden="true">/</span> Company</p>
       <p class="kicker">Rauzr Inc</p>
-      <h1>Software for the people who prepare the filing.</h1>
+      <h1>Bring AI to health and life sciences.</h1>
       <p class="lead">
-        Rauzr builds Rauzr Helix, a platform of AI agents for health and life sciences: orchestration across a review, retrieval that can point at a page, deterministic rules, and a human on the decision. Dossiq, decision support for generic variation packages, is the first product. Full RIM and further agents are planned.
+        Rauzr is building AI agents for regulated health and life sciences work. Agents should do the work; humans review. Our first product is Rauzr Helix, an agent platform for health and life sciences, and its first agent is Dossiq, for regulatory affairs. Full RIM and further agents are planned.
       </p>
     </div>
   </section>
@@ -23,7 +23,7 @@ const description =
   <section class="section">
     <div class="container contact-grid">
       <div>
-        <h2>The work is specific.</h2>
+        <h2>Where we start.</h2>
         <div class="prose" style="margin-top: 1rem">
           <p>
             Generic drug variations — a site change, a specification update, a stability protocol amendment — turn on whether Module 3 still agrees with itself and with the last approved sequence. That review is careful, cross-document, and slow.
@@ -38,15 +38,15 @@ const description =
             <dd>Hyderabad, India</dd>
           </div>
           <div>
-            <dt>Also</dt>
-            <dd>United States</dd>
+            <dt>Customers</dt>
+            <dd>Teams in the US, EU, UK, Canada, Australia, and beyond</dd>
           </div>
           <div>
             <dt>Platform</dt>
             <dd>Rauzr Helix</dd>
           </div>
           <div>
-            <dt>First product</dt>
+            <dt>First agent</dt>
             <dd>Dossiq, for regulatory affairs</dd>
           </div>
         </dl>
@@ -74,13 +74,14 @@ const description =
             <input id="organization" name="organization" type="text" autocomplete="organization" required />
           </div>
           <div class="field">
-            <label for="pathway">Pathway</label>
+            <label for="pathway">Interest</label>
             <select id="pathway" name="pathway" required>
-              <option value="" disabled selected>Select a pathway</option>
-              <option>US CBE-30</option>
-              <option>EU Type IB</option>
-              <option>Both US CBE-30 and EU Type IB</option>
-              <option>Another variation type</option>
+              <option value="" disabled selected>Select an area</option>
+              <option>Dossiq — US CBE-30</option>
+              <option>Dossiq — EU Type IB</option>
+              <option>Dossiq — both US CBE-30 and EU Type IB</option>
+              <option>Rauzr Helix — another regulated workflow</option>
+              <option>Something else</option>
             </select>
           </div>
           <div class="field">
@@ -117,12 +118,12 @@ const description =
     const organization = String(data.get("organization") || "").trim();
     const pathway = String(data.get("pathway") || "").trim();
     const note = String(data.get("note") || "").trim();
-    const subject = `Dossiq demo request — ${organization}`;
+    const subject = `Rauzr demo request — ${organization}`;
     const body = [
       `Name: ${name}`,
       `Work email: ${workEmail}`,
       `Organization: ${organization}`,
-      `Pathway: ${pathway}`,
+      `Interest: ${pathway}`,
       "",
       note,
     ].join("\n");

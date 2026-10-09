@@ -1,0 +1,68 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+:root { --w: 1440px; --h: 820px; }
+.stage { background: radial-gradient(ellipse 60% 70% at 55% 45%, #dff1ed 0%, rgba(223,241,237,0) 60%), linear-gradient(180deg, #fbf8f3 0%, #f3f8f7 100%); }
+svg.flow { position: absolute; inset: 0; }
+.doc { width: 250px; padding: 18px 20px 22px; }
+.doc h4 { font-size: 15px; font-weight: 600; letter-spacing: -.01em; margin-top: 10px; }
+.doc .lines i:nth-child(2) { width: 88%; } .doc .lines i:nth-child(3) { width: 72%; } .doc .lines i:nth-child(4) { width: 82%; }
+.agent { position: absolute; left: 640px; top: 300px; width: 190px; height: 190px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #1a9e92, #0f766e 55%, #0b4f4a 100%);
+  box-shadow: 0 30px 60px -20px rgba(15,118,110,.6), inset 0 2px 0 rgba(255,255,255,.25); display: grid; place-items: center; }
+.ring { position: absolute; border-radius: 50%; border: 1px solid rgba(15,118,110,.25); }
+.agent .core { color: #fff; text-align: center; }
+.agent .core b { display: block; font-size: 19px; font-weight: 600; letter-spacing: -.02em; margin-top: 6px; }
+.agent .core span { font-size: 12px; opacity: .8; letter-spacing: .08em; text-transform: uppercase; }
+.finding { left: 930px; top: 140px; width: 380px; padding: 22px 22px 20px; }
+.finding h3 { font-size: 20px; font-weight: 600; letter-spacing: -.025em; margin: 12px 0 6px; }
+.finding p { font-size: 14px; color: #3c4958; line-height: 1.5; }
+.cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.cmp div { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; font-size: 13px; }
+.cmp div b { display: block; font-size: 15px; margin-top: 2px; }
+.cmp .bad b { color: #b45309; }
+.cites { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.review { left: 990px; top: 520px; width: 330px; padding: 20px 22px; }
+.who { display: flex; align-items: center; gap: 12px; }
+.av { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #0f1d33, #2a3c58); color: #fff; display: grid; place-items: center; font-size: 13px; font-weight: 600; }
+.who b { font-size: 15px; display: block; } .who span { font-size: 12.5px; color: var(--muted); }
+.btns { display: flex; gap: 8px; margin-top: 16px; }
+.btns .chip { padding: 8px 14px; }
+.check { position: absolute; right: -14px; top: -14px; width: 40px; height: 40px; border-radius: 50%; background: var(--teal); display: grid; place-items: center; box-shadow: 0 10px 20px -8px rgba(15,118,110,.8); }
+</style></head><body><div class="stage">
+<div class="grid"></div>
+<div class="glow" style="left:560px;top:220px;width:360px;height:360px;background:rgba(20,163,151,.35)"></div>
+<div class="glow" style="left:980px;top:120px;width:380px;height:260px;background:rgba(95,211,196,.25)"></div>
+<svg class="flow" viewBox="0 0 1440 820">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#0f766e" stop-opacity=".15"/><stop offset="1" stop-color="#0f766e" stop-opacity=".7"/></linearGradient></defs>
+  <g fill="none" stroke="url(#g)" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round">
+    <path d="M370 210 C 500 210, 540 360, 650 380"/>
+    <path d="M390 420 C 500 420, 560 400, 640 398"/>
+    <path d="M370 630 C 500 630, 540 440, 650 420"/>
+  </g>
+  <g fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linecap="round" opacity=".65">
+    <path d="M830 370 C 880 330, 890 290, 930 270"/>
+    <path d="M820 450 C 900 520, 940 560, 990 590"/>
+  </g>
+  <circle cx="930" cy="270" r="5" fill="#0f766e"/><circle cx="990" cy="590" r="5" fill="#0f766e"/>
+</svg>
+<div class="card doc" style="left:120px;top:120px;transform:rotate(-4deg)"><span class="chip teal">R&amp;D</span><h4>Specification</h4><div class="lines"><i class="t"></i><i></i><i></i><i class="hl" style="width:60%"></i></div></div>
+<div class="card doc" style="left:140px;top:330px;transform:rotate(2deg)"><span class="chip teal">QC</span><h4>Analytical method</h4><div class="lines"><i class="t"></i><i></i><i class="hl" style="width:55%"></i><i></i></div></div>
+<div class="card doc" style="left:110px;top:540px;transform:rotate(-2deg)"><span class="chip teal">QA</span><h4>Stability report</h4><div class="lines"><i class="t"></i><i></i><i></i><i></i></div></div>
+<div class="ring" style="left:595px;top:255px;width:280px;height:280px"></div>
+<div class="ring" style="left:555px;top:215px;width:360px;height:360px;opacity:.6"></div>
+<div class="agent"><div class="core">
+  <svg width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M14 6c0 14 26 14 26 21S14 34 14 48"/><path d="M40 6c0 14-26 14-26 21s26 7 26 21" opacity=".55"/><path d="M18 14h18M18 40h18M22 27h10" opacity=".8"/></svg>
+  <b>Rauzr agent</b><span>Read · compare · cite</span></div></div>
+<div class="card finding">
+  <div style="display:flex;justify-content:space-between;align-items:center"><span class="chip amber">● Discrepancy</span><span class="label">Rule-based check</span></div>
+  <h3>Spec limit and method limit disagree</h3>
+  <p>Two sources state different acceptance criteria for the same test.</p>
+  <div class="cmp"><div><span class="label">Specification</span><b>Limit A</b></div><div class="bad"><span class="label">Method</span><b>Limit B</b></div></div>
+  <div class="cites"><span class="chip ghost mono">Spec · p.4</span><span class="chip ghost mono">Method · p.12</span><span class="chip teal">Suggested fix</span></div>
+</div>
+<div class="card review">
+  <div class="check"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg></div>
+  <div class="who"><div class="av">RA</div><div><b>Human review</b><span>Reviewer decides the disposition</span></div></div>
+  <div class="btns"><span class="chip solid">Agree</span><span class="chip ghost">Dispute</span><span class="chip ghost">Waive</span></div>
+</div>
+</div></body></html>

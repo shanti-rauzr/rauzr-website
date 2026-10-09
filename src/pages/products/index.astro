@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets";
+import { u } from "../../lib/url";
+import Base from "../../layouts/Base.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import helix from "../../assets/visuals/helix.png";
+
+const title = "Products — Rauzr";
+const description =
+  "Rauzr products: Rauzr Helix, our agent platform for health and life sciences, with Dossiq for regulatory affairs as its first agent. Full RIM and more agents are planned.";
+---
+
+<Base title={title} description={description}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="crumb"><a href={u("/")}>Rauzr</a> <span aria-hidden="true">/</span> Products</p>
+      <p class="kicker">Products</p>
+      <h1>Agents for the work regulated teams do every day.</h1>
+      <p class="lead">
+        Rauzr builds AI agents that do the work and leave the decisions to people. Our first product is Rauzr Helix, for health and life sciences.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 1rem">
+    <div class="container">
+      <article class="product-card">
+        <div class="product-art">
+          <Image
+            src={helix}
+            alt="Abstract Rauzr Helix visual: a double helix made of small document cards, tagged Dossiq available, Full RIM planned, and more agents planned."
+            widths={[720, 1200, 2000]}
+            sizes="(min-width: 960px) 640px, 100vw"
+            quality={80}
+            format="webp"
+          />
+        </div>
+        <div class="product-body">
+          <p class="road-status">Available now</p>
+          <h2 class="product-h">Rauzr Helix</h2>
+          <p>The agent platform for health and life sciences. Helix agents read regulated documents, find issues with deterministic rules, cite every fact, and suggest resolutions. People review and decide.</p>
+          <ul class="product-tree" aria-label="Rauzr Helix agents">
+            <li>
+              <a href={u("/products/helix/dossiq/")}><strong>Dossiq</strong> — regulatory affairs</a>
+              <em class="drop-status">Available</em>
+            </li>
+            <li><span>Full RIM — Regulatory Information Management</span><em class="drop-status planned">Planned</em></li>
+            <li><span>More Helix agents</span><em class="drop-status planned">Planned</em></li>
+          </ul>
+          <a class="btn btn-primary" href={u("/products/helix/")}>Explore Rauzr Helix</a>
+        </div>
+      </article>
+
+      <div class="future-row">
+        <div>
+          <p class="road-status planned">Planned · coming later</p>
+          <h3>Future Rauzr products</h3>
+        </div>
+        <p>Helix is where we start. Further Rauzr products are planned on the same principle — agents do the work, people review. None are announced yet, and no dates are set.</p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
