@@ -1,0 +1,45 @@
+---
+import { u } from "../lib/url";
+
+interface Props {
+  variant?: "home" | "dossiq";
+}
+const { variant = "home" } = Astro.props;
+---
+
+<section class="speed" aria-labelledby="speed-title">
+  <div class="container">
+    <div class="speed-head">
+      <p class="kicker">{variant === "home" ? "Speed" : "Why it matters"}</p>
+      <h2 id="speed-title" class="sr-only">From about 20 days to a few hours</h2>
+      {
+        variant === "home" && (
+          <a class="speed-attr" href={u("/products/helix/dossiq/")}>
+            With Dossiq, the first Rauzr Helix agent <span aria-hidden="true">→</span>
+          </a>
+        )
+      }
+    </div>
+    <div class="speed-grid">
+      <div class="speed-stat speed-before">
+        <p class="speed-label">Manual package review by an RA expert</p>
+        <p class="speed-num">~20 days</p>
+      </div>
+      <div class="speed-arrow" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="48" height="48"><path d="M10 24h26M28 15l9 9-9 9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </div>
+      <div class="speed-stat speed-after">
+        <p class="speed-label">What Dossiq is built to check in</p>
+        <p class="speed-num">a few hours</p>
+      </div>
+    </div>
+    <div class="speed-copy">
+      <p>
+        A dossier package review that takes an RA expert about 20 days, Dossiq is built to check in a few hours. Your experts spend their time on decisions, not searching.
+      </p>
+      <p class="speed-note">
+        Typical manual review time reported by regulatory affairs teams; Dossiq timing depends on package size.
+      </p>
+    </div>
+  </div>
+</section>

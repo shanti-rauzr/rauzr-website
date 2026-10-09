@@ -1,0 +1,60 @@
+---
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+
+const items = [
+  { name: "RIM systems", eg: "such as Veeva Vault", body: "Connect to your regulatory information management system for source documents and approved sequences." },
+  { name: "Document management", eg: "such as Veeva Vault", body: "Read controlled R&D, QC, and QA documents where they already live." },
+  { name: "SharePoint", eg: "document libraries", body: "Pull working documents from team libraries." },
+  { name: "File shares", eg: "network folders", body: "Point an agent at the folders your team already uses." },
+  { name: "PDF exports", eg: "from any system", body: "Bring in exports from systems without a direct connector." },
+];
+---
+
+<section class:list={["section", "integrations", { "integrations-compact": compact }]} aria-labelledby="int-title">
+  <div class="container">
+    <div class="section-head split-head">
+      <div>
+        <p class="kicker">Fits your stack</p>
+        <h2 id="int-title">Built to fit the systems you already run.</h2>
+      </div>
+      <div>
+        <p class="int-badge"><span class="int-dot" aria-hidden="true"></span>Integrations in development</p>
+        <p class="lead">
+          Built to connect with your RIM and document systems — such as Veeva Vault — and your existing document stores (SharePoint, file shares, PDF exports).
+        </p>
+      </div>
+    </div>
+    {
+      compact ? (
+        <ul class="int-chips" aria-label="Planned integrations">
+          {items.filter((i) => i.name !== "Document management").map((i) => (
+            <li>
+              <strong>{i.name}</strong>
+              <span>{i.eg}</span>
+              <em>Planned</em>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div class="int-grid">
+          {items.map((i) => (
+            <article class="int-card">
+              <div class="int-card-top">
+                <h3>{i.name}</h3>
+                <em class="drop-status planned">Planned</em>
+              </div>
+              <p class="int-eg">{i.eg}</p>
+              <p>{i.body}</p>
+            </article>
+          ))}
+        </div>
+      )
+    }
+    <p class="int-note">
+      Integrations are planned and in development; availability will be confirmed per customer. Third-party names are shown as text only and are trademarks of their respective owners.
+    </p>
+  </div>
+</section>

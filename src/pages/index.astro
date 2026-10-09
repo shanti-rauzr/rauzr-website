@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import { u } from "../lib/url";
 import Base from "../layouts/Base.astro";
 import CtaBand from "../components/CtaBand.astro";
+import SpeedBand from "../components/SpeedBand.astro";
+import Integrations from "../components/Integrations.astro";
 import { brandTitle, demoMailto } from "../data/site";
 import hero from "../assets/visuals/hero.png";
 import howAgents from "../assets/visuals/how-agents.png";
@@ -64,7 +66,7 @@ const principles = [
       <h1>Bring AI to health and life sciences.</h1>
       <p class="hero-sub">Agents do the work. Humans review.</p>
       <p class="lead">
-        Rauzr builds AI agents for the document-heavy work of regulated life sciences — for teams in the US, Europe, and beyond — with every finding cited and every decision left to people.
+        Rauzr builds AI agents for the document-heavy work of regulated life sciences, with every finding cited and every decision left to people.
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href={demoMailto}>Request a demo</a>
@@ -101,6 +103,8 @@ const principles = [
       </div>
     </div>
   </section>
+
+  <SpeedBand variant="home" />
 
   <section class="section" aria-labelledby="how-title">
     <div class="container">
@@ -170,6 +174,8 @@ const principles = [
     </div>
   </section>
 
+  <Integrations compact={true} />
+
   <section class="section" aria-labelledby="principles-title">
     <div class="container">
       <div class="section-head split-head">
@@ -193,17 +199,17 @@ const principles = [
     </div>
   </section>
 
-  <section class="global" aria-labelledby="global-title">
-    <div class="container global-grid">
+  <section class="ambition" aria-labelledby="ambition-title">
+    <div class="container ambition-grid">
       <div>
-        <p class="kicker">Global</p>
-        <h2 id="global-title">Built in Hyderabad for teams worldwide.</h2>
+        <p class="kicker">Our standard</p>
+        <h2 id="ambition-title">Enterprise-grade. Agent-first by design.</h2>
       </div>
       <div>
-        <p class="global-copy">For regulated teams in the US, EU, UK, Canada, Australia, and beyond. Aligned to ICH guidelines and the Common Technical Document (CTD) format.</p>
-        <ul class="regions" aria-label="Regions served">
-          <li>United States</li><li>European Union</li><li>United Kingdom</li><li>Canada</li><li>Australia</li><li>India</li><li>ICH · CTD</li>
-        </ul>
+        <p class="ambition-copy">
+          Rauzr is building world-class software for health and life sciences: enterprise-grade like the best platforms in the category, with agents built in from day one rather than added on later.
+        </p>
+        <p class="standards-line"><span>Standards</span>Aligned to ICH guidelines and the Common Technical Document (CTD) format.</p>
       </div>
     </div>
   </section>
