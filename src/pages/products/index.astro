@@ -7,7 +7,7 @@ import helix from "../../assets/visuals/helix.png";
 
 const title = "Products — Rauzr";
 const description =
-  "Rauzr products: Rauzr Helix, our agent platform for health and life sciences, with Dossiq for regulatory affairs as its first agent. Full RIM and more agents are planned.";
+  "Rauzr products: Rauzr Helix, our agent platform for health and life sciences, with Dossiq for regulatory affairs as its first agent. Dossiq Respond and Regulatory Intelligence are coming soon.";
 ---
 
 <Base title={title} description={description}>
@@ -28,7 +28,7 @@ const description =
         <div class="product-art">
           <Image
             src={helix}
-            alt="Abstract Rauzr Helix visual: a double helix made of small document cards, tagged Dossiq available, Full RIM planned, and more agents planned."
+            alt="Abstract Rauzr Helix visual: a double helix made of small document cards, tagged Dossiq available, Dossiq Respond coming soon, and Regulatory Intelligence coming soon."
             widths={[720, 1200, 2000]}
             sizes="(min-width: 960px) 640px, 100vw"
             quality={80}
@@ -44,12 +44,50 @@ const description =
               <a href={u("/products/helix/dossiq/")}><strong>Dossiq</strong> — regulatory affairs</a>
               <em class="drop-status">Available</em>
             </li>
-            <li><span>Full RIM — Regulatory Information Management</span><em class="drop-status planned">Planned</em></li>
-            <li><span>More Helix agents</span><em class="drop-status planned">Planned</em></li>
+            <li>
+              <a href="#dossiq-respond"><strong>Dossiq Respond</strong></a>
+              <em class="drop-status planned">Coming soon</em>
+            </li>
+            <li>
+              <a href="#regulatory-intelligence"><strong>Regulatory Intelligence</strong></a>
+              <em class="drop-status planned">Coming soon</em>
+            </li>
           </ul>
           <a class="btn btn-primary" href={u("/products/helix/")}>Explore Rauzr Helix</a>
         </div>
       </article>
+
+      <section class="upcoming" id="upcoming" aria-labelledby="upcoming-title">
+        <div class="upcoming-head">
+          <p class="kicker">Upcoming</p>
+          <h2 id="upcoming-title" class="upcoming-h">Coming soon</h2>
+          <p class="upcoming-lead">Two agents on Rauzr Helix. No release dates are set.</p>
+        </div>
+        <div class="upcoming-grid">
+          <article class="upcoming-card" id="dossiq-respond" aria-labelledby="respond-title">
+            <p class="road-status planned">Coming soon</p>
+            <h3 id="respond-title">Dossiq Respond</h3>
+            <p>Drafts responses to agency deficiency letters and queries, ready for regulatory affairs to review.</p>
+            <ul class="ticks">
+              <li>Inbox monitoring for FDA and EMA deficiency letters, RFIs, and queries</li>
+              <li>Classification and deadline tracking, with reminders</li>
+              <li>Drafted responses that cite linked dossier evidence</li>
+              <li>Regulatory affairs review, edit, and Part 11-style e-sign before submission, with an audit trail</li>
+            </ul>
+          </article>
+          <article class="upcoming-card" id="regulatory-intelligence" aria-labelledby="ri-title">
+            <p class="road-status planned">Coming soon</p>
+            <h3 id="ri-title">Regulatory Intelligence</h3>
+            <p>Flags which products and market approvals a guidance or rule change affects.</p>
+            <ul class="ticks">
+              <li>Continuous monitoring of FDA and EMA guidance, rules, and announcements</li>
+              <li>Impact mapping to the affected products, dossiers, and market approvals</li>
+              <li>Prioritized alerts and summaries</li>
+              <li>Suggested follow-up actions linked into Dossiq</li>
+            </ul>
+          </article>
+        </div>
+      </section>
 
       <div class="future-row">
         <div>
