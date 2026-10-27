@@ -989,7 +989,7 @@ h3 {
 
 @media (min-width: 860px) {
   .roadmap {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.4rem;
   }
 }
@@ -2231,6 +2231,15 @@ h3 {
 .upcoming-card p:not(.road-status) {
   font-size: 1.02rem;
   line-height: 1.6;
+}
+
+.upcoming-card .ticks {
+  margin: 0.95rem 0 0;
+  font-size: 0.98rem;
+}
+
+.upcoming-card .ticks li {
+  margin: 0.38rem 0;
 }
 
 /* ---------- v3: principles ---------- */

@@ -37,7 +37,7 @@ function isCurrent(href: string, match?: string) {
                   <a href={c.href} class:list={["drop-link", { "drop-child": c.depth === 1 }]}>
                     <span class="drop-label">
                       {c.label}
-                      {c.status && <em class:list={["drop-status", { planned: c.status === "Planned" }]}>{c.status}</em>}
+                      {c.status && <em class:list={["drop-status", { planned: c.status !== "Available" }]}>{c.status}</em>}
                     </span>
                     <span class="drop-note">{c.note}</span>
                   </a>
@@ -82,7 +82,7 @@ function isCurrent(href: string, match?: string) {
                           aria-current={current === c.href ? "page" : undefined}
                         >
                           {c.label}
-                          {c.status && <em class:list={["drop-status", { planned: c.status === "Planned" }]}>{c.status}</em>}
+                          {c.status && <em class:list={["drop-status", { planned: c.status !== "Available" }]}>{c.status}</em>}
                         </a>
                       ))}
                   </div>
