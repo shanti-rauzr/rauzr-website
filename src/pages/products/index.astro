@@ -7,7 +7,7 @@ import helix from "../../assets/visuals/helix.png";
 
 const title = "Products — Rauzr";
 const description =
-  "Rauzr products: Rauzr Helix, our agent platform for health and life sciences, with Dossiq for regulatory affairs as its first agent. Full RIM and more agents are planned.";
+  "Rauzr products: Rauzr Helix, our agent platform for health and life sciences, with Dossiq for regulatory affairs as its first agent. Dossiq Respond and Regulatory Intelligence are coming soon. Full RIM is planned.";
 ---
 
 <Base title={title} description={description}>
@@ -45,11 +45,30 @@ const description =
               <em class="drop-status">Available</em>
             </li>
             <li><span>Full RIM — Regulatory Information Management</span><em class="drop-status planned">Planned</em></li>
-            <li><span>More Helix agents</span><em class="drop-status planned">Planned</em></li>
           </ul>
           <a class="btn btn-primary" href={u("/products/helix/")}>Explore Rauzr Helix</a>
         </div>
       </article>
+
+      <section class="upcoming" id="upcoming" aria-labelledby="upcoming-title">
+        <div class="upcoming-head">
+          <p class="kicker">Upcoming</p>
+          <h2 id="upcoming-title" class="upcoming-h">Coming soon</h2>
+          <p class="upcoming-lead">Two agents on Rauzr Helix. No release dates are set.</p>
+        </div>
+        <div class="upcoming-grid">
+          <article class="upcoming-card" aria-labelledby="respond-title">
+            <p class="road-status planned">Coming soon</p>
+            <h3 id="respond-title">Dossiq Respond</h3>
+            <p>Watches the regulatory inbox and picks up agency deficiency letters and queries from FDA and EMA. Drafts responses with linked dossier evidence and deadline tracking, ready for regulatory affairs review and e-sign.</p>
+          </article>
+          <article class="upcoming-card" aria-labelledby="ri-title">
+            <p class="road-status planned">Coming soon</p>
+            <h3 id="ri-title">Regulatory Intelligence</h3>
+            <p>Monitors FDA and EMA guidance and rule changes, and flags which products and market approvals are affected.</p>
+          </article>
+        </div>
+      </section>
 
       <div class="future-row">
         <div>
