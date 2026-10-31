@@ -252,6 +252,13 @@ h3 {
 
 .header-cta {
   display: none;
+  white-space: nowrap;
+}
+
+@media (min-width: 920px) and (max-width: 1120px) {
+  .nav-desktop a {
+    padding-inline: 0.55rem;
+  }
 }
 
 .nav-mobile {
@@ -2724,4 +2731,228 @@ h3 {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+/* ---------- insights ---------- */
+.insights-index {
+  padding-top: 0.5rem;
+}
+
+.insight-list {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.insight-card {
+  display: grid;
+  overflow: hidden;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  color: inherit;
+  text-decoration: none;
+}
+
+.insight-card:hover {
+  border-color: #b9d9d4;
+  color: inherit;
+}
+
+.insight-card-media {
+  overflow: hidden;
+  background: #e8eef0;
+}
+
+.insight-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: 70% center;
+}
+
+.insight-card-body {
+  padding: 1.35rem 1.4rem 1.5rem;
+}
+
+.insight-card time {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.insight-card h2 {
+  margin: 0.4rem 0 0.5rem;
+  font-size: clamp(1.35rem, 2vw, 1.6rem);
+  letter-spacing: -0.03em;
+}
+
+.insight-card:hover h2 {
+  color: var(--teal-dark);
+}
+
+.insight-card p {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+@media (min-width: 800px) {
+  .insight-card {
+    grid-template-columns: 17.5rem 1fr;
+    align-items: stretch;
+  }
+
+  .insight-card-media img {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+
+  .insight-card-body {
+    padding: 1.5rem 1.6rem 1.6rem 1.5rem;
+    align-self: center;
+  }
+}
+
+.article-hero {
+  padding-bottom: 1.5rem;
+}
+
+.article-column {
+  max-width: 48rem;
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.55rem;
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.article-meta time {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.article-hero h1 {
+  max-width: 16em;
+}
+
+.article-standfirst {
+  font-style: italic;
+}
+
+.article-body {
+  padding-bottom: 5rem;
+}
+
+.article-cover {
+  margin: 0 0 2rem;
+}
+
+.article-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow-card);
+}
+
+.article-prose {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.article-prose > * + * {
+  margin-top: 0.95rem;
+}
+
+.article-prose h2 {
+  max-width: 40rem;
+  margin-top: 2.4rem;
+  font-size: clamp(1.65rem, 2.5vw, 2.05rem);
+}
+
+.article-prose > p,
+.article-prose > ul,
+.article-prose > ol,
+.article-prose > blockquote {
+  max-width: 40rem;
+}
+
+.article-prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.article-prose img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: white;
+}
+
+.article-prose p:has(> img) {
+  max-width: none;
+  margin-top: 1.75rem;
+}
+
+.article-prose p:has(> img) em {
+  display: block;
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.article-prose blockquote {
+  margin: 1.35rem 0;
+  padding: 1rem 1.15rem 1.05rem;
+  background: var(--teal-soft);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 14px 14px 0;
+  color: var(--ink);
+}
+
+.article-prose blockquote p {
+  max-width: none;
+}
+
+.article-prose .references {
+  max-width: none;
+  margin-top: 1rem;
+  padding-left: 1.35rem;
+}
+
+.article-prose .references li + li {
+  margin-top: 0.75rem;
+}
+
+.article-prose .references a {
+  overflow-wrap: anywhere;
+}
+
+.article-prose .references li:target {
+  background: var(--teal-soft);
+  border-radius: 8px;
+  box-shadow: 0 0 0 0.45rem var(--teal-soft);
+}
+
+.article-prose a[href^="#ref-"] {
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+  white-space: nowrap;
 }

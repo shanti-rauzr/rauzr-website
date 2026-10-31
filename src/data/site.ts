@@ -30,6 +30,7 @@ export const nav: NavItem[] = [
     ],
   },
   { href: u('/approach/'), label: 'How it works' },
+  { href: u('/insights/'), label: 'Insights' },
   { href: u('/company/'), label: 'Company' },
 ];
 

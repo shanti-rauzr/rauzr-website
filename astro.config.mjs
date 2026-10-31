@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { satteri } from '@astrojs/markdown-satteri';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
@@ -15,6 +16,12 @@ export default defineConfig({
   trailingSlash: 'always',
   build: {
     format: 'directory',
+  },
+  markdown: {
+    // Leave quotes and dashes as written in article source.
+    processor: satteri({
+      features: { smartPunctuation: false },
+    }),
   },
   vite: {
     base,
