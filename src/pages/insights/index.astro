@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import { u } from "../../lib/url";
+import Base from "../../layouts/Base.astro";
+import { formatInsightDate, getInsights, insightDateISO } from "../../lib/insights";
+
+const title = "Insights — Rauzr";
+const description = "Notes from Rauzr on regulatory work in health and life sciences.";
+const articles = await getInsights();
+---
+
+<Base title={title} description={description}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="crumb"><a href={u("/")}>Rauzr</a> <span aria-hidden="true">/</span> Insights</p>
+      <p class="kicker">Insights</p>
+      <h1>Insights</h1>
+      <p class="lead">{description}</p>
+    </div>
+  </section>
+
+  <section class="section insights-index" aria-label="Articles">
+    <div class="container">
+      <ul class="insight-list">
+        {
+          articles.map((article, index) => (
+            <li>
+              <a class="insight-card" href={u(`/insights/${article.id}/`)}>
+                <div class="insight-card-media">
+                  <Image
+                    src={article.data.cover}
+                    alt=""
+                    widths={[480, 800, 1200]}
+                    sizes="(min-width: 800px) 280px, calc(100vw - 1.5rem)"
+                    quality={80}
+                    format="webp"
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                </div>
+                <div class="insight-card-body">
+                  <time datetime={insightDateISO(article.data.date)}>{formatInsightDate(article.data.date)}</time>
+                  <h2>{article.data.title}</h2>
+                  <p>{article.data.description}</p>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Base>

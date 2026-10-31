@@ -1,0 +1,97 @@
+---
+import { Image, getImage } from "astro:assets";
+import { render } from "astro:content";
+import { u } from "../../lib/url";
+import Base from "../../layouts/Base.astro";
+import { siteUrl } from "../../data/site";
+import { formatInsightDate, getInsights, insightDateISO } from "../../lib/insights";
+
+export async function getStaticPaths() {
+  const articles = await getInsights();
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const publishedDate = insightDateISO(article.data.date);
+const published = `${publishedDate}T00:00:00.000Z`;
+const og = await getImage({
+  src: article.data.cover,
+  width: 1200,
+  height: 675,
+  format: "jpeg",
+  quality: 82,
+});
+const canonical = new URL(Astro.url.pathname, Astro.site ?? siteUrl);
+const ogImage = new URL(og.src, Astro.site ?? siteUrl);
+const title = `${article.data.title} — Rauzr`;
+---
+
+<Base
+  title={title}
+  description={article.data.description}
+  ogType="article"
+  published={published}
+  author={article.data.author}
+  image={{
+    src: og.src,
+    width: og.attributes.width ?? 1200,
+    height: og.attributes.height ?? 675,
+    alt: article.data.coverAlt,
+  }}
+  jsonLd={{
+    "@type": "Article",
+    headline: article.data.title,
+    description: article.data.description,
+    datePublished: published,
+    author: {
+      "@type": "Organization",
+      name: article.data.author,
+      url: siteUrl,
+    },
+    image: ogImage.toString(),
+    mainEntityOfPage: canonical.toString(),
+  }}
+>
+  <article>
+    <header class="page-hero article-hero">
+      <div class="container">
+        <div class="article-column">
+          <p class="crumb"><a href={u("/")}>Rauzr</a> <span aria-hidden="true">/</span> <a href={u("/insights/")}>Insights</a> <span aria-hidden="true">/</span> {article.data.title}</p>
+          <p class="article-meta">
+            <time datetime={publishedDate}>{formatInsightDate(article.data.date)}</time>
+            <span aria-hidden="true">·</span>
+            <span>{article.data.author}</span>
+          </p>
+          <h1>{article.data.title}</h1>
+          <p class="lead article-standfirst">{article.data.description}</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="article-body">
+      <div class="container">
+        <div class="article-column">
+          <figure class="article-cover">
+            <Image
+              src={article.data.cover}
+              alt={article.data.coverAlt}
+              widths={[640, 960, 1280, 1600]}
+              sizes="(min-width: 840px) 768px, calc(100vw - 1.5rem)"
+              quality={82}
+              format="webp"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </figure>
+          <div class="article-prose prose">
+            <Content />
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</Base>

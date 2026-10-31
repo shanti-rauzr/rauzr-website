@@ -67,7 +67,7 @@ function isCurrent(href: string, match?: string) {
                 <a
                   class="nav-link"
                   href={item.href}
-                  aria-current={current === item.href ? "page" : undefined}
+                  aria-current={(item.children ? current === item.href : isCurrent(item.href)) ? "page" : undefined}
                 >
                   {item.label}
                 </a>

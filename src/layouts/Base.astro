@@ -9,11 +9,23 @@ interface Props {
   title: string;
   description: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  image?: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+  };
+  ogType?: "website" | "article";
+  published?: string;
+  author?: string;
 }
 
-const { title, description, jsonLd } = Astro.props;
+const { title, description, jsonLd, image, ogType = "website", published, author } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? siteUrl);
-const ogImage = new URL("/og.png", Astro.site ?? siteUrl);
+const ogImage = image ? new URL(image.src, Astro.site ?? siteUrl) : new URL("/og.png", Astro.site ?? siteUrl);
+const ogWidth = image?.width ?? 1200;
+const ogHeight = image?.height ?? 630;
+const ogAlt = image?.alt ?? "Rauzr. Bring AI to health and life sciences. Agents do the work. Humans review.";
 
 const organization = {
   "@context": "https://schema.org",
@@ -65,21 +77,23 @@ const json = JSON.stringify({
     <link rel="icon" href={u("/favicon.ico")} sizes="any" />
     <link rel="icon" type="image/svg+xml" href={u("/favicon.svg")} />
     <link rel="apple-touch-icon" href={u("/apple-touch-icon.png")} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Rauzr" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Rauzr. Bring AI to health and life sciences. Agents do the work. Humans review." />
+    <meta property="og:image:width" content={ogWidth} />
+    <meta property="og:image:height" content={ogHeight} />
+    <meta property="og:image:alt" content={ogAlt} />
+    {published && <meta property="article:published_time" content={published} />}
+    {author && <meta property="article:author" content={author} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Rauzr. Bring AI to health and life sciences. Agents do the work. Humans review." />
+    <meta name="twitter:image:alt" content={ogAlt} />
     <script type="application/ld+json" set:html={json} />
   </head>
   <body>
