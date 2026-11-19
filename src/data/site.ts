@@ -1,7 +1,7 @@
 import { u } from '../lib/url';
 export const email = 'contact@rauzr.ai';
 
-export const demoMailto = `mailto:${email}?subject=${encodeURIComponent('Rauzr demo request')}`;
+export const demoHref = `${u('/company/')}#demo`;
 
 export const siteUrl = 'https://rauzr.ai';
 

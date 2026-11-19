@@ -1,7 +1,7 @@
 ---
 import { u } from "../lib/url";
 import Logo from "./Logo.astro";
-import { demoMailto, nav } from "../data/site";
+import { demoHref, nav } from "../data/site";
 
 const current = Astro.url.pathname;
 
@@ -53,7 +53,7 @@ function isCurrent(href: string, match?: string) {
       }
     </nav>
 
-    <a class="btn btn-primary header-cta" href={demoMailto}>Request a demo</a>
+    <a class="btn btn-primary header-cta" href={demoHref} data-demo-open>Request a demo</a>
 
     <details class="nav-mobile">
       <summary class="nav-toggle" aria-label="Menu">
@@ -91,7 +91,7 @@ function isCurrent(href: string, match?: string) {
             ))
           }
         </nav>
-        <a class="btn btn-primary" href={demoMailto}>Request a demo</a>
+        <a class="btn btn-primary" href={demoHref} data-demo-open>Request a demo</a>
       </div>
     </details>
   </div>
