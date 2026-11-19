@@ -1,7 +1,8 @@
 ---
 import { u } from "../lib/url";
 import Base from "../layouts/Base.astro";
-import { demoMailto, email } from "../data/site";
+import { email } from "../data/site";
+import DemoForm from "../components/DemoForm.astro";
 
 const title = "Company and contact — Rauzr";
 const description =
@@ -49,83 +50,13 @@ const description =
       </div>
 
       <div class="form-card" id="contact">
-        <h2 class="form-title">Request a demo</h2>
-        <a class="email-display" href={demoMailto}>{email}</a>
-        <p class="form-note" id="form-help">
-          Or use the form. It opens your email application with the note addressed to contact@rauzr.ai. This site does not store the message.
+        <h2 class="form-title" id="demo">Request a demo</h2>
+        <p class="form-note">We'll get back to you soon.</p>
+        <DemoForm idPrefix="page-demo" />
+        <p class="form-note" style="margin-top: 1rem">
+          Or email <a href={`mailto:${email}`}>{email}</a>.
         </p>
-        <form id="demo-form" action={demoMailto} method="post" enctype="text/plain">
-          <div class="form-row two">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" autocomplete="name" required />
-            </div>
-            <div class="field">
-              <label for="email">Work email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required />
-            </div>
-          </div>
-          <div class="field">
-            <label for="organization">Organization</label>
-            <input id="organization" name="organization" type="text" autocomplete="organization" required />
-          </div>
-          <div class="field">
-            <label for="pathway">Interest</label>
-            <select id="pathway" name="pathway" required>
-              <option value="" disabled selected>Select an area</option>
-              <option>Dossiq — US CBE-30</option>
-              <option>Dossiq — EU Type IB</option>
-              <option>Dossiq — both US CBE-30 and EU Type IB</option>
-              <option>Rauzr Helix — another regulated workflow</option>
-              <option>Something else</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="note">What you want to look at</label>
-            <textarea
-              id="note"
-              name="note"
-              required
-              placeholder="For example: stability protocol amendments, and a walkthrough on a sample package."
-            ></textarea>
-          </div>
-          <button class="btn btn-primary" type="submit">Send email</button>
-          <p class="form-status" id="form-status" role="status"></p>
-        </form>
-        <noscript>
-          <p class="form-note" style="margin-top: 0.8rem">
-            JavaScript is off. Use <a href={demoMailto}>{email}</a>.
-          </p>
-        </noscript>
       </div>
     </div>
   </section>
 </Base>
-
-<script>
-  const form = document.querySelector("#demo-form");
-  const status = document.querySelector("#form-status");
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!(form instanceof HTMLFormElement)) return;
-    const data = new FormData(form);
-    const name = String(data.get("name") || "").trim();
-    const workEmail = String(data.get("email") || "").trim();
-    const organization = String(data.get("organization") || "").trim();
-    const pathway = String(data.get("pathway") || "").trim();
-    const note = String(data.get("note") || "").trim();
-    const subject = `Rauzr demo request — ${organization}`;
-    const body = [
-      `Name: ${name}`,
-      `Work email: ${workEmail}`,
-      `Organization: ${organization}`,
-      `Interest: ${pathway}`,
-      "",
-      note,
-    ].join("\n");
-    if (status) {
-      status.textContent = "Opening your email application, addressed to contact@rauzr.ai.";
-    }
-    window.location.href = `mailto:contact@rauzr.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
-</script>

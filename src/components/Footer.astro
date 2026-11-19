@@ -1,7 +1,7 @@
 ---
 import { u } from "../lib/url";
 import Logo from "./Logo.astro";
-import { demoMailto, disclaimer, email } from "../data/site";
+import { demoHref, disclaimer, email } from "../data/site";
 ---
 
 <footer class="site-footer">
@@ -37,7 +37,7 @@ import { demoMailto, disclaimer, email } from "../data/site";
         <p class="footer-title">Contact</p>
         <div class="footer-links">
           <a href={`mailto:${email}`}>{email}</a>
-          <a href={demoMailto}>Request a demo</a>
+          <a href={demoHref} data-demo-open>Request a demo</a>
           <span>Hyderabad</span>
         </div>
       </div>

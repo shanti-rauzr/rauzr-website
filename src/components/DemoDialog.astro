@@ -1,0 +1,232 @@
+---
+import DemoForm from "./DemoForm.astro";
+---
+
+<dialog class="demo-dialog" id="demo-dialog" aria-labelledby="demo-dialog-title">
+  <div class="demo-dialog-inner">
+    <button type="button" class="demo-dialog-close" aria-label="Close" data-demo-close>
+      <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+        <path d="M2 2l10 10M12 2L2 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+      </svg>
+    </button>
+    <h2 id="demo-dialog-title" class="form-title">Request a demo</h2>
+    <p class="form-note">We'll get back to you soon.</p>
+    <DemoForm idPrefix="dialog-demo" />
+  </div>
+</dialog>
+
+<script>
+  const FORM_ENDPOINT = "https://formsubmit.co/ajax/contact@rauzr.ai";
+  const CONTACT_MAILTO = "mailto:contact@rauzr.ai";
+  const PHONE_PATTERN = /^[6-9][0-9]{9}$/;
+
+  function normalizeIndianMobile(raw: string): string {
+    let s = raw.trim().replace(/[\s-]/g, "");
+    if (s.startsWith("+91")) s = s.slice(3);
+    else if (s.startsWith("0091")) s = s.slice(4);
+    else if (s.startsWith("91") && s.replace(/\D/g, "").length >= 12) s = s.slice(2);
+    if (s.startsWith("0")) s = s.slice(1);
+    return s.replace(/\D/g, "");
+  }
+
+  function shouldRewrite(raw: string): boolean {
+    const compact = raw.trim();
+    return (
+      compact.includes("+") ||
+      /[\s-]/.test(compact) ||
+      compact.startsWith("0") ||
+      compact.startsWith("0091") ||
+      (compact.startsWith("91") && compact.replace(/\D/g, "").length >= 12)
+    );
+  }
+
+  function phoneField(form: HTMLFormElement) {
+    const local = form.querySelector<HTMLInputElement>("[data-demo-phone-local]");
+    const full = form.querySelector<HTMLInputElement>("[data-demo-phone-full]");
+    const error = form.querySelector<HTMLElement>("[data-demo-phone-error]");
+    const wrap = form.querySelector<HTMLElement>("[data-demo-phone-wrap]");
+    return { local, full, error, wrap };
+  }
+
+  function setPhoneValidity(form: HTMLFormElement, show: boolean): boolean {
+    const { local, full, error, wrap } = phoneField(form);
+    if (!local || !full) return true;
+    const digits = normalizeIndianMobile(local.value);
+    const empty = digits.length === 0;
+    const valid = empty || PHONE_PATTERN.test(digits);
+    full.value = valid && !empty ? `+91${digits}` : "";
+    local.setAttribute("aria-invalid", valid ? "false" : "true");
+    wrap?.classList.toggle("is-invalid", !valid);
+    if (error) error.hidden = valid || !show;
+    return valid;
+  }
+
+  function applyPhoneRewrite(input: HTMLInputElement) {
+    const raw = input.value;
+    if (!shouldRewrite(raw)) return;
+    const digits = normalizeIndianMobile(raw);
+    input.value = digits.length > 10 ? digits.slice(0, 10) : digits;
+  }
+
+  function setSending(form: HTMLFormElement, sending: boolean) {
+    const button = form.querySelector<HTMLButtonElement>("[data-demo-submit]");
+    if (button) {
+      button.disabled = sending;
+      button.textContent = sending ? "Sending…" : "Request a demo";
+    }
+  }
+
+  function showThanks(form: HTMLFormElement, workEmail: string) {
+    const fields = form.querySelector<HTMLElement>(".demo-form-fields");
+    const thanks = form.querySelector<HTMLElement>("[data-demo-thanks]");
+    const error = form.querySelector<HTMLElement>("[data-demo-error]");
+    if (fields) fields.hidden = true;
+    if (error) error.hidden = true;
+    if (thanks) {
+      thanks.hidden = false;
+      thanks.textContent = `Thanks. We'll be in touch at ${workEmail}.`;
+    }
+  }
+
+  function showError(form: HTMLFormElement) {
+    const error = form.querySelector<HTMLElement>("[data-demo-error]");
+    if (!error) return;
+    error.hidden = false;
+    error.replaceChildren(
+      document.createTextNode("Something went wrong. Please email "),
+    );
+    const link = document.createElement("a");
+    link.href = CONTACT_MAILTO;
+    link.textContent = "contact@rauzr.ai";
+    error.append(link, document.createTextNode("."));
+  }
+
+  function resetFormState(form: HTMLFormElement) {
+    form.reset();
+    const { full, error, wrap, local } = phoneField(form);
+    if (full) full.value = "";
+    if (local) local.setAttribute("aria-invalid", "false");
+    wrap?.classList.remove("is-invalid");
+    if (error) error.hidden = true;
+    const fields = form.querySelector<HTMLElement>(".demo-form-fields");
+    const thanks = form.querySelector<HTMLElement>("[data-demo-thanks]");
+    const fail = form.querySelector<HTMLElement>("[data-demo-error]");
+    if (fields) fields.hidden = false;
+    if (thanks) {
+      thanks.hidden = true;
+      thanks.textContent = "";
+    }
+    if (fail) {
+      fail.hidden = true;
+      fail.replaceChildren();
+    }
+    setSending(form, false);
+  }
+
+  const dialog = document.querySelector<HTMLDialogElement>("#demo-dialog");
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const open = target.closest("[data-demo-open]");
+    if (open instanceof HTMLElement && dialog) {
+      event.preventDefault();
+      document.querySelector(".nav-mobile")?.removeAttribute("open");
+      const form = dialog.querySelector("form.demo-form");
+      if (form instanceof HTMLFormElement) resetFormState(form);
+      dialog.showModal();
+      const first = dialog.querySelector<HTMLInputElement>(".demo-form-fields input:not([type=hidden]):not([tabindex='-1'])");
+      first?.focus();
+      return;
+    }
+
+    if (target.closest("[data-demo-close]")) {
+      dialog?.close();
+    }
+  });
+
+  dialog?.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+
+  document.addEventListener("input", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLInputElement) || !target.hasAttribute("data-demo-phone-local")) return;
+    const form = target.form;
+    if (!form) return;
+    if (shouldRewrite(target.value)) applyPhoneRewrite(target);
+    setPhoneValidity(form, false);
+  });
+
+  document.addEventListener("blur", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLInputElement) || !target.hasAttribute("data-demo-phone-local")) return;
+    const form = target.form;
+    if (!form) return;
+    applyPhoneRewrite(target);
+    setPhoneValidity(form, true);
+  }, true);
+
+  document.addEventListener("submit", (event) => {
+    const form = event.target;
+    if (!(form instanceof HTMLFormElement) || !form.classList.contains("demo-form")) return;
+    event.preventDefault();
+
+    const emailInput = form.querySelector<HTMLInputElement>("input[name='email']");
+    const workEmail = emailInput?.value.trim() ?? "";
+    if (!emailInput || !emailInput.checkValidity()) {
+      emailInput?.reportValidity();
+      emailInput?.focus();
+      return;
+    }
+    if (!setPhoneValidity(form, true)) {
+      phoneField(form).local?.focus();
+      return;
+    }
+
+    const error = form.querySelector<HTMLElement>("[data-demo-error]");
+    if (error) {
+      error.hidden = true;
+      error.replaceChildren();
+    }
+
+    const data = new FormData(form);
+    const phone = String(data.get("phone") || "").trim();
+    const payload = {
+      email: workEmail,
+      phone,
+      name: String(data.get("name") || "").trim(),
+      company: String(data.get("company") || "").trim(),
+      note: String(data.get("note") || "").trim(),
+      _subject: "Rauzr demo request",
+      _template: "table",
+      _captcha: "false",
+      _honey: String(data.get("_honey") || ""),
+    };
+
+    setSending(form, true);
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(async (response) => {
+        let body: { success?: boolean | string } = {};
+        try {
+          body = await response.json();
+        } catch {
+          body = {};
+        }
+        const ok =
+          response.ok && (body.success === true || body.success === "true");
+        if (ok) showThanks(form, workEmail);
+        else showError(form);
+      })
+      .catch(() => showError(form))
+      .finally(() => setSending(form, false));
+  });
+</script>

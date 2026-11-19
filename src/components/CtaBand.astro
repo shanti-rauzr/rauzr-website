@@ -1,5 +1,5 @@
 ---
-import { demoMailto, email } from "../data/site";
+import { demoHref, email } from "../data/site";
 
 interface Props {
   variant?: "company" | "dossiq";
@@ -25,7 +25,7 @@ const copy =
     <h2 id="cta-title">{copy.title}</h2>
     <p class="band-copy">{copy.body}</p>
     <div class="band-actions">
-      <a class="btn btn-primary" href={demoMailto}>Request a demo</a>
+      <a class="btn btn-primary" href={demoHref} data-demo-open>Request a demo</a>
       <a class="band-mail" href={`mailto:${email}`}>{email}</a>
     </div>
   </div>

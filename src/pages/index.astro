@@ -5,7 +5,7 @@ import Base from "../layouts/Base.astro";
 import CtaBand from "../components/CtaBand.astro";
 import SpeedBand from "../components/SpeedBand.astro";
 import Integrations from "../components/Integrations.astro";
-import { brandTitle, demoMailto } from "../data/site";
+import { brandTitle, demoHref } from "../data/site";
 import hero from "../assets/visuals/hero.png";
 import howAgents from "../assets/visuals/how-agents.png";
 import howRules from "../assets/visuals/how-rules.png";
@@ -69,7 +69,7 @@ const principles = [
         Rauzr builds AI agents for the document-heavy work of regulated life sciences, with every finding cited and every decision left to people.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href={demoMailto}>Request a demo</a>
+        <a class="btn btn-primary" href={demoHref} data-demo-open>Request a demo</a>
         <a class="btn btn-secondary" href={u("/products/helix/")}>Explore Rauzr Helix</a>
       </div>
     </div>
